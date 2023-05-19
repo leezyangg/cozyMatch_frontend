@@ -20,7 +20,7 @@ const router = createBrowserRouter([
         children: [
             {
                 path:'/user',
-                element: <Navigate to="/temp" />
+                element: <Navigate to="/landingpage" />
             },
             {
                 path:'/landingpage',
