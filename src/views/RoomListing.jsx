@@ -1,5 +1,5 @@
 import RoomInfoCard from "../components/RoomInfoCard";
-import listedroom from "../assets/listedRoom/data";
+import listedroom from "../assets/requiredData/roomListData";
 import { HiLocationMarker } from 'react-icons/hi';
 
 export default function RoomListing() {

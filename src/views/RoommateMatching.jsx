@@ -1,26 +1,20 @@
-import RoomInfoCard from "../components/RoomInfoCard";
-import listedroom from "../assets/listedRoom/data";
-import { HiLocationMarker } from 'react-icons/hi';
+import RoommateInfoCard from "../components/RoommateInfoCard";
+import roommateData from "../assets/requiredData/roommateData";
 
 export default function RoommateMatching() {
-    const listedRoomCard = listedroom.map(listedRoom => {
+    const roommateInfoCard = roommateData.map(roommate => {
         return (
-            <RoomInfoCard
-                key={listedRoom.id}
-                {...listedRoom}
+            <RoommateInfoCard
+                key={roommate.id}
+                {...roommate}
             />
         )
     })
 
     return (
         <div>
-            <h2 className="mx-20 font-bold text-2xl">Room Listing</h2>
-            <div className="flex mx-20 mt-3 mb-5 items-center">
-                <HiLocationMarker size={20} />
-                <h3>Taman Serdang Java, Sri Kembangan, Selangor</h3>
-            </div>
-            <div className="space-y-7">
-                {listedRoomCard}
+            <div className="grid gap-10 grid-cols-5 grid-rows-2 px-10">
+                {roommateInfoCard}
             </div>
         </div>
     )

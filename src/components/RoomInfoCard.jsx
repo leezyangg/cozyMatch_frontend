@@ -23,7 +23,7 @@ export default function RoomInfoCard(props) {
             </div>
             <div className="w-48 flex flex-col items-center">
                 <h4 className="font-bold">Rent Per Month:</h4>
-                <p className="text-sm">RM{props.rent}</p>
+                <p className="text-sm">RM{props.rentalFee}</p>
             </div>
             <div className='w-48 flex items-center space-x-4'>
                 <div className='flex items-center'>
@@ -49,7 +49,7 @@ export default function RoomInfoCard(props) {
 RoomInfoCard.propTypes = {
     type: PropTypes.string.isRequired,
     address: PropTypes.string.isRequired,
-    rent:PropTypes.number.isRequired,
+    rentalFee:PropTypes.number.isRequired,
     bedroom: PropTypes.number.isRequired,
     bathroom: PropTypes.number.isRequired,
     parking: PropTypes.number.isRequired,
