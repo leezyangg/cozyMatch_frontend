@@ -38,6 +38,10 @@ const router = createBrowserRouter([
                 element: <Navigate to="/tem" />
             },
             {
+                path:'/tem',
+                element: <AddRoom />,
+            },
+            {
                 path:'/addroom',
                 element: <AddRoom />,
             },

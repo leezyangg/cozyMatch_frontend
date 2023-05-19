@@ -3,29 +3,32 @@ import loginImg from '../assets/room.jpg'
 
 export default function AddRoom() {
     return (
-        <div>
-            <div><img src={loginImg} alt="" /></div>
-            <div>
-                <form>
-                    <h2 className="text-3xl font-bold">
+        <div className='grid gird-cols-1 sm:grid-cols-2 h-screen w-full'>
+            <div><img className='w-full h-full object-cover' src={loginImg} alt="" /></div>
+            <div className='bg-gray-100 flex flex-col justify-center'>
+                <form className='max-w-[400px] w-full mx-auto'>
+                    <h2 className="text-3xl font-bold py-5">
                         List New Room
                     </h2>
-                    <div>
+                    <div className='flex flex-col py-2'>
                         <label>Property Title *</label>
                         <input type="text"/>
                     </div>
-                    <div>
+                    <div className='flex flex-col py-2'>
                         <label>Address & Location *</label>
                         <input type="text"/>
                     </div>
-                    <div>
+                    <div className='grid grid-cols-2 gap-1 py-2'>
+                        <div>
                         <label>Type *</label>
                         <input type="text"/>
-                    </div>
-                    <div>
+                        </div>
+                        <div>
                         <label>Price (RM) *</label>
                         <input type="text"/>
+                        </div>
                     </div>
+                    <div className='grid grid-cols-2 gap-1 py-2'>
                     <div>
                         <label>Furnishing *</label>
                         <input type="text"/>
@@ -34,8 +37,12 @@ export default function AddRoom() {
                         <label>Vacancy *</label>
                         <input type="text"/>
                     </div>
-                    <div>
-                        <label>Facilities</label>
+                    </div>
+                    <div className='flex flex-col py-2'>
+                    <label>Facilities</label>
+                    <div className='grid grid-cols-3 gap-1'>
+                        
+                        <div>
                         <p>
                         <input type="checkbox"/> Wifi
                         </p>
@@ -51,7 +58,9 @@ export default function AddRoom() {
                         <p>
                         <input type="checkbox"/> Kitchen Utility
                         </p>
-                        <p>
+                        </div>
+                       <div>
+                       <p>
                         <input type="checkbox"/> Parking
                         </p>
                         <p>
@@ -66,6 +75,8 @@ export default function AddRoom() {
                         <p>
                         <input type="checkbox"/> Salon
                         </p>
+                       </div>
+                        <div>
                         <p>
                         <input type="checkbox"/> Swimming Pool
                         </p>
@@ -81,16 +92,20 @@ export default function AddRoom() {
                         <p>
                         <input type="checkbox"/> 24 Hours Security
                         </p>
+                        </div>
+                        
                     </div>
-                    <div>
+                    </div>
+                    
+                    <div className='flex flex-col py-2'>
                         <label>Description</label>
                         <input type="text"/>
                     </div>
-                    <div>
+                    <div className='flex flex-col py-2'>
                         <label>Upload Property Video *</label>
                         <input type="text"/>
                     </div>
-                    <div>
+                    <div className='flex flex-col py-2'>
                         <label>Upload Property Pictures</label>
                         <input type="text"/>
                     </div>
