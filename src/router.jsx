@@ -6,6 +6,7 @@ import LandlordLayout from "./components/LandlordLayout";
 import AddRoom from "./components/AddRoom";
 import LandingPage from "./views/LandingPage";
 import RoomListing from "./views/RoomListing";
+import RoommateMatching from "./views/RoommateMatching";
 
 const router = createBrowserRouter([
     // Guest Login
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
                 path:'/landingpage',
                 element: <LandingPage />,
             },
+            {
+                path: '/roommateMatch',
+                element: <RoommateMatching />
+            }
         ],
     },
 
