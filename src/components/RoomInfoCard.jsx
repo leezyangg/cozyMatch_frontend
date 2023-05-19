@@ -39,7 +39,7 @@ export default function RoomInfoCard(props) {
                     {props.parking}
                 </div>
             </div>
-            <div className='text-green-500'>
+            <div className={props.availability ? 'text-green-500' : 'text-red-500'}>
                 {props.availability? 'Available' : 'Unavailable'}
             </div>
         </div>
