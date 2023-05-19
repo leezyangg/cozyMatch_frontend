@@ -1,5 +1,5 @@
 import { Navigate, createBrowserRouter } from "react-router-dom";
-import TemplateForm from "./views/TemplateForm";
+import TemplateForm from "./views/TempleteForm";
 import UserLayout from "./components/UserLayout";
 import LoginPage from "./views/LoginPage";
 import LandlordLayout from "./components/LandlordLayout";
