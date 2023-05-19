@@ -1,8 +1,9 @@
 import { Navigate, createBrowserRouter } from "react-router-dom";
-import TemplateForm from "./views/TempleteForm";
+import TemplateForm from "./views/TemplateForm";
 import UserLayout from "./components/UserLayout";
 import LoginPage from "./views/LoginPage";
 import LandlordLayout from "./components/LandlordLayout";
+import AddRoom from "./components/AddRoom";
 
 const router = createBrowserRouter([
     // Guest Login
@@ -29,8 +30,22 @@ const router = createBrowserRouter([
 
     //Landlord Login
     {
-        path:'/landlord',
-        element: <LandlordLayout />
+        path:'/',
+        element: <LandlordLayout />,
+        children: [
+            {
+                path:'/landlord',
+                element: <Navigate to="/tem" />
+            },
+            {
+                path:'/addroom',
+                element: <AddRoom />,
+            },
+            {
+                path:'/template',
+                element: <TemplateForm />,
+            },
+        ],
     }
 ])
 
