@@ -1,7 +1,8 @@
 import { BiBed, BiBath } from 'react-icons/bi';
 import { AiOutlineCar } from 'react-icons/ai';
+import PropTypes from 'prop-types';
 
-export default function RoomInfoCard() {
+export default function RoomInfoCard(props) {
 
     return (
         <div className="flex shadow-xl mx-20 rounded-xl items-center bg-slate-300 space-x-8">
@@ -10,11 +11,11 @@ export default function RoomInfoCard() {
             </div>
             <div className="w-48">
                 <h4 className="font-bold">Address:</h4>
-                <p className="text-sm">No 32, Jalan Bukit Serdang, Taman Bukit Serdang, 43400 Serdang Selangor</p>
+                <p className="text-sm">{props.address}</p>
             </div>
             <div className="w-48 flex flex-col items-center">
                 <h4 className="font-bold">Property Type:</h4>
-                <p className="text-sm">Condominium</p>
+                <p className="text-sm">{props.type}</p>
             </div>
             <div className="w-48 flex flex-col items-center">
                 <h4 className="font-bold">Posted Date:</h4>
@@ -22,25 +23,36 @@ export default function RoomInfoCard() {
             </div>
             <div className="w-48 flex flex-col items-center">
                 <h4 className="font-bold">Rent Per Month:</h4>
-                <p className="text-sm">RM1,300</p>
+                <p className="text-sm">RM{props.rent}</p>
             </div>
             <div className='w-48 flex items-center space-x-4'>
                 <div className='flex items-center'>
                     <BiBed />
-                    5
+                    {props.bedroom}
                 </div>
                 <div className='flex items-center'>
                     <BiBath />
-                    5
+                    {props.bathroom}
                 </div>
                 <div className='flex items-center'>
                     <AiOutlineCar />
-                    5
+                    {props.parking}
                 </div>
             </div>
             <div className='text-green-500'>
-                Available
+                {props.availability? 'Available' : 'Unavailable'}
             </div>
         </div>
     )
 }
+
+RoomInfoCard.propTypes = {
+    type: PropTypes.string.isRequired,
+    address: PropTypes.string.isRequired,
+    rent:PropTypes.number.isRequired,
+    bedroom: PropTypes.number.isRequired,
+    bathroom: PropTypes.number.isRequired,
+    parking: PropTypes.number.isRequired,
+    availability: PropTypes.bool.isRequired,
+  };
+  

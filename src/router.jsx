@@ -5,6 +5,7 @@ import LoginPage from "./views/LoginPage";
 import LandlordLayout from "./components/LandlordLayout";
 import AddRoom from "./components/AddRoom";
 import LandingPage from "./views/LandingPage";
+import RoomListing from "./views/RoomListing";
 
 const router = createBrowserRouter([
     // Guest Login
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
                 path:'/template',
                 element: <TemplateForm />,
             },
+            {
+                path:'/roomlist',
+                element: <RoomListing />,
+            }
         ],
     }
 ])
