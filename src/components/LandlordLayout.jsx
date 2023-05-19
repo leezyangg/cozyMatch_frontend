@@ -5,7 +5,7 @@ const navigation = [
     { name: 'Home', to: '/' },
     { name: 'Room Listing', to: '/roommateMatch' },
     { name: 'Template', to: '/template' },
-    { name: 'Add Room', to: '/roomMatch' },
+    { name: 'Add Room', to: '/addroom' },
 ]
 
 const user = {
