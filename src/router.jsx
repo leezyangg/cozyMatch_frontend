@@ -4,6 +4,7 @@ import UserLayout from "./components/UserLayout";
 import LoginPage from "./views/LoginPage";
 import LandlordLayout from "./components/LandlordLayout";
 import AddRoom from "./components/AddRoom";
+import LandingPage from "./views/LandingPage";
 
 const router = createBrowserRouter([
     // Guest Login
@@ -22,8 +23,8 @@ const router = createBrowserRouter([
                 element: <Navigate to="/temp" />
             },
             {
-                path:'/temp',
-                element: <TemplateForm />,
+                path:'/landingpage',
+                element: <LandingPage />,
             },
         ],
     },
