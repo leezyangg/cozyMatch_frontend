@@ -4,7 +4,11 @@ import PropTypes from 'prop-types';
 export default function AvailableRoomCard(props) {
 
     return (
-       
+        
+        <div>
+            <h1>hello</h1>
+        </div>
+      
     )
 }
 

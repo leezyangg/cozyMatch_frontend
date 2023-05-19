@@ -4,6 +4,7 @@ import UserLayout from "./components/UserLayout";
 import LoginPage from "./views/LoginPage";
 import LandlordLayout from "./components/LandlordLayout";
 import AddRoom from "./components/AddRoom";
+import HomePage from "./components/HomePage";
 import LandingPage from "./views/LandingPage";
 import RoomListing from "./views/RoomListing";
 import RoommateMatching from "./views/RoommateMatching";
@@ -22,7 +23,11 @@ const router = createBrowserRouter([
         children: [
             {
                 path:'/user',
-                element: <Navigate to="/landingpage" />
+                element: <Navigate to="/homepage" />
+            },
+            {
+                path:'/homepage',
+                element: <HomePage />,
             },
             {
                 path:'/landingpage',

@@ -2,8 +2,7 @@ import { NavLink, Outlet } from "react-router-dom";
 import { Menu } from '@headlessui/react'
 
 const navigation = [
-    { name: 'Home', to: '/' },
-    { name: 'Room Listing', to: '/roomlist' },
+    { name: 'Home', to: '/roomlist' },
     { name: 'Template', to: '/template' },
     { name: 'Add Room', to: '/addroom' },
 ]
