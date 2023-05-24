@@ -80,5 +80,5 @@ export default function MapComponent() {
     };
   }, []);
 
-  return <div ref={mapContainerRef} style={{ width: '50%', height: '400px' }}></div>;
+  return <div ref={mapContainerRef} style={{ width: '100%', height: '100%' }}></div>;
 }
