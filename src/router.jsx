@@ -8,6 +8,7 @@ import HomePage from "./components/HomePage";
 import LandingPage from "./views/LandingPage";
 import RoomListing from "./views/RoomListing";
 import RoommateMatching from "./views/RoommateMatching";
+import RenterHomePage from "./views/RenterHomePage";
 
 const router = createBrowserRouter([
     // Guest Login
@@ -36,6 +37,11 @@ const router = createBrowserRouter([
             {
                 path: '/roommateMatch',
                 element: <RoommateMatching />
+            }
+            ,
+            {
+                path: '/RenterHomePage',
+                element: <RenterHomePage />
             }
         ],
     },
