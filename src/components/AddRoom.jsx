@@ -1,4 +1,3 @@
-import React from 'react'
 import loginImg from '../assets/room.jpg'
 import {BsUpload} from 'react-icons/bs'
 
