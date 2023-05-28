@@ -4,7 +4,7 @@ export default [
         img: "src/assets/room.jpg",
         address: "No 32, Jalan Bukit Serdang, Taman Bukit Serdang, 43400 Serdang Selangor",
         type: "Condominium",
-        rent: 1300,
+        rentalFee: 1300,
         bedroom: 5,
         bathroom: 5,
         parking: 5,

@@ -37,12 +37,11 @@ const router = createBrowserRouter([
             {
                 path: '/roommateMatch',
                 element: <RoommateMatching />
-            }
-            ,
+            },
             {
-                path: '/RenterHomePage',
+                path: '/renterHomePage',
                 element: <RenterHomePage />
-            }
+            },
         ],
     },
 

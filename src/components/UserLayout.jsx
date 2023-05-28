@@ -4,7 +4,7 @@ import { Menu } from '@headlessui/react'
 const navigation = [
     { name: 'Home', to: '/user' },
     { name: 'Roommate Matching', to: '/roommateMatch' },
-    { name: 'Room Matching', to: '/roomMatch' },
+    { name: 'Room Matching', to: '/renterHomePage' },
 ]
 
 const user = {

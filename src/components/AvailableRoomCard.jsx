@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-import PropTypes from 'prop-types';
 import { HiLocationMarker } from 'react-icons/hi';
 import { AiFillStar } from 'react-icons/ai';
 import { MdFavoriteBorder } from 'react-icons/md';
@@ -51,13 +50,3 @@ export default function AvailableRoomCard() {
         </div>
     )
 }
-
-AvailableRoomCard.propTypes = {
-    name: PropTypes.string.isRequired,
-    roommates: PropTypes.string.isRequired,
-    rent: PropTypes.number.isRequired,
-    facilities: PropTypes.string.isRequired,
-    roomavailable: PropTypes.number.isRequired,
-    reviews: PropTypes.number.isRequired,
-    rating: PropTypes.number.isRequired
-};
