@@ -3,6 +3,29 @@ import { HiLocationMarker } from 'react-icons/hi';
 import { BiBed, BiBath } from 'react-icons/bi';
 import { AiOutlineCar, AiFillStar } from 'react-icons/ai';
 
+// png here
+import chat from "../assets/images/Chat.png";
+import airConditioner from '../assets/images/air-conditioner.png';
+import kitchen from '../assets/images/kitchen-set.png';
+import balcony from '../assets/images/balcony.png';
+import garden from '../assets/images/gardening.png';
+import gym from "../assets/images/gym.png";
+import bbq from "../assets/images/bbq.png";
+import playground from "../assets/images/playground.png";
+import squash from "../assets/images/squash.png";
+import tennis from "../assets/images/tennis.png";
+import boy1 from "../assets/images/Boy1.png";
+import boy2 from "../assets/images/Boy2.png";
+import smoking from "../assets/images/yes-smoking-icon.png";
+import noSmoking from "../assets/images/no-smoking-icon.png";
+import pet from "../assets/images/pet-icon.png";
+import noPet from "../assets/images/no-pets-icon.png";
+import drink from "../assets/images/alcohol-icon.png";
+import noDrink from "../assets/images/no-alcohol-icon.png";
+import earlyBird from "../assets/images/early-bird-icon.png";
+import nightOwl from "../assets/images/night-owl-icon.png";
+
+
 export default function RoomDetail() {
     // Retrieve the roomId from the URL parameters
     const { roomId } = useParams();
@@ -41,6 +64,20 @@ export default function RoomDetail() {
         bedroom: 5,
         bathroom: 5,
         parking: 5,
+
+        // Property features
+        aircon: true,
+        kitchen: true,
+        balcony: true,
+        garden: true,
+
+        // Facilities
+        gym: true,
+        bbq: true,
+        playground: true,
+        squash: true,
+        tennis: true,
+
         builtUpSize: 1100,
         propertyType: "Condominium",
         vacancy: 1,
@@ -50,6 +87,16 @@ export default function RoomDetail() {
             landlordProfile: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
             name: "Arif",
             rating: 4.0,
+        },
+        renters: {
+            id: 1,
+            name: "Izrin",
+            occupation: "student",
+            cleanRoomFrequency: 1,
+            smoking: false,
+            pet: false,
+            drink: false,
+            isEarly: true,
         },
     };
 
@@ -137,7 +184,7 @@ export default function RoomDetail() {
                     <div className="col-span-1 shadow-xl rounded-xl p-6">
                         <h4 className='font-bold text-2xl'>Landlord</h4>
                         <div className='flex flex-col items-center pt-5'>
-                            <img src={mockRoomData.landlord.landlordProfile} alt="" className='rounded-full w-20 max-w-full h-auto' />
+                            <img src={mockRoomData.landlord.landlordProfile} alt="" className='rounded-full w-20 max-w-full h-auto mt-1' />
                             <h4 className='text-sky-700 text-lg'>{mockRoomData.landlord.name}</h4>
                             <div className='flex items-center space-x-1 mt-3'>
                                 <h4 className='font-semibold'>{mockRoomData.landlord.rating.toFixed(1)}</h4>
@@ -151,9 +198,130 @@ export default function RoomDetail() {
                                 </div>
                                 <h4 className='text-sm'>(7 Reviews)</h4>
                             </div>
-                            <div className='bg-orange-400 flex py-2 px-10 mt-3 rounded space-x-2 items-center'>
-                                <img src="/src/assets/images/Chat.png" alt="chat icon" className='h-5' />
-                                <h4 className='text-sm text-white '>Chat with Me</h4>
+
+                            {/* Logic of the Chat with me */}
+                            <div className='bg-orange-400 flex py-3 px-12 mt-3 rounded space-x-2 items-center cursor-pointer' onClick="#">
+                                <img src={chat} alt="chat icon" className='h-5' />
+                                <h4 className='text-sm text-white font-bold'>Chat with Me</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className='grid grid-cols-4 gap-4 pt-5'>
+                    <div className='col-span-3'>
+                        <div className='shadow-xl rounded-xl p-6'>
+                            <div className='flex flex-col'>
+                                <h4 className='font-bold text-2xl'>Property Features</h4>
+                                <div className='grid grid-cols-3 grid-rows-3 gap-4 pt-5 space-y-1'>
+
+                                    {/* Logic whether or not to show the property features */}
+                                    {mockRoomData.aircon && <div className='flex items-center space-x-3 col-span-1 px-1'>
+                                        <img src={airConditioner} alt="aircon" className='h-7' />
+                                        <h4>Air Conditioner</h4>
+                                    </div>}
+                                    {mockRoomData.kitchen && <div className='flex items-center space-x-3 col-span-1 px-1'>
+                                        <img src={kitchen} alt="kitchen" className='h-7' />
+                                        <h4>Kitchen Cabinet</h4>
+                                    </div>}
+                                    {mockRoomData.balcony && <div className='flex items-center space-x-3 col-span-1 px-1'>
+                                        <img src={balcony} alt="balcony" className='h-7' />
+                                        <h4>Balcony</h4>
+                                    </div>}
+                                    {mockRoomData.garden && <div className='flex items-center space-x-3 col-span-1 px-1'>
+                                        <img src={garden} alt="Garden" className='h-7' />
+                                        <h4>Garden</h4>
+                                    </div>}
+                                </div>
+                            </div>
+                        </div>
+                        <div className='shadow-xl rounded-xl p-6'>
+                            <h4 className='font-bold text-2xl'>Facilities</h4>
+                            <div className='grid grid-cols-3 grid-rows-3 gap-4 pt-5 space-y-1'>
+
+                                {/* Logic whether or not to show the Facilities */}
+                                {mockRoomData.gym && <div className='flex items-center space-x-3 col-span-1 px-1'>
+                                    <img src={gym} alt="gym" className='h-7' />
+                                    <h4>Gymnasium</h4>
+                                </div>}
+                                {mockRoomData.bbq && <div className='flex items-center space-x-3 col-span-1 px-1'>
+                                    <img src={bbq} alt="bbq" className='h-7' />
+                                    <h4>BBQ</h4>
+                                </div>}
+                                {mockRoomData.playground && <div className='flex items-center space-x-3 col-span-1 px-1'>
+                                    <img src={playground} alt="playground" className='h-7' />
+                                    <h4>Playground</h4>
+                                </div>}
+                                {mockRoomData.squash && <div className='flex items-center space-x-3 col-span-1 px-1'>
+                                    <img src={squash} alt="squash" className='h-7' />
+                                    <h4>Squash Court</h4>
+                                </div>}
+                                {mockRoomData.tennis && <div className='flex items-center space-x-3 col-span-1 px-1'>
+                                    <img src={tennis} alt="tennis" className='h-7' />
+                                    <h4>Tennis Court</h4>
+                                </div>}
+
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Roommate Information Here */}
+                    <div className="col-span-1 shadow-xl rounded-xl p-6">
+                        <h4 className='font-bold text-2xl'>Roommate</h4>
+                        <div className='flex flex-col mt-4'>
+                            <div className='grid grid-cols-2 gap-4'>
+                                <div className='flex flex-col items-center'>
+                                    <img src={boy1} alt="boy1" className='h-20' />
+                                    <div className="flex flex-col items-center space-y-5 py-5 rounded-t-xl">
+                                        <div className="flex flex-col items-center">
+
+                                            {/* Roommate Information Here */}
+                                            <h4 className="font-semibold">{mockRoomData.renters.name}</h4>
+                                            <h4 className="text-sm">{mockRoomData.renters.occupation}</h4>
+                                        </div>
+                                        <div className="flex flex-col items-center">
+                                            <h4 className="font-semibold">Clean room</h4>
+                                            <h4 className="text-sm">{mockRoomData.renters.cleanRoomFrequency} per week</h4>
+                                        </div>
+                                        <div className="flex flex-col items-center space-y-1">
+                                            <h4 className="font-semibold">Preference</h4>
+                                            <div className="flex items-center space-x-3">
+                                                <img src={mockRoomData.renters.smoking ? smoking : noSmoking} alt="" className="h-5" />
+                                                <img src={mockRoomData.renters.pet ? pet : noPet} alt="" className="h-5" />
+                                                <img src={mockRoomData.renters.drink ? drink : noDrink} alt="" className="h-5" />
+                                                <img src={mockRoomData.renters.isEarly ? earlyBird : nightOwl} alt="" className="h-5" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className='flex flex-col items-center'>
+                                    <img src={boy2} alt="boy2" className='h-20' />
+                                    <div className="flex flex-col items-center space-y-5 py-5 rounded-t-xl">
+                                        <div className="flex flex-col items-center">
+
+                                            {/* Roommate Information Here */}
+                                            <h4 className="font-semibold">{mockRoomData.renters.name}</h4>
+                                            <h4 className="text-sm">{mockRoomData.renters.occupation}</h4>
+                                        </div>
+                                        <div className="flex flex-col items-center">
+                                            <h4 className="font-semibold">Clean room</h4>
+                                            <h4 className="text-sm">{mockRoomData.renters.cleanRoomFrequency} per week</h4>
+                                        </div>
+                                        <div className="flex flex-col items-center space-y-1">
+                                            <h4 className="font-semibold">Preference</h4>
+                                            <div className="flex items-center space-x-3">
+                                                <img src={mockRoomData.renters.smoking ? smoking : noSmoking} alt="" className="h-5" />
+                                                <img src={mockRoomData.renters.pet ? pet : noPet} alt="" className="h-5" />
+                                                <img src={mockRoomData.renters.drink ? drink : noDrink} alt="" className="h-5" />
+                                                <img src={mockRoomData.renters.isEarly ? earlyBird : nightOwl} alt="" className="h-5" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className='flex flex-col items-center'>
+                                <div className='bg-orange-400 flex py-3 px-12 mt-3 rounded space-x-2 items-center cursor-pointer' onClick="#">
+                                    <h4 className='text-sm text-white font-bold'>Roommate Information</h4>
+                                </div>
                             </div>
                         </div>
                     </div>
