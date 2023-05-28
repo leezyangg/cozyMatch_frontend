@@ -68,38 +68,44 @@ function TemplateForm() {
         return (
           //General section
           <fieldset>
-            <legend>1.0 General</legend>
+            <legend className="mx-20 font-bold text-2xl">1.0 General</legend>
             <div>
+              <h3 className=" mx-20 mt-3 mb-2 font-bold">Room Type:</h3>
+            </div>
+            <div className="flex mx-20 mb-5 items-center">
+
               <label>
                 <input type="radio" value="house" checked={propertyType === 'house'} onChange={() => setPropertyType('house')} />
-                House
+                <span class="ml-2">House</span>
               </label>
-              <label>
+              <label className="flex mx-5 items-center">
                 <input type="radio" value="apartment" checked={propertyType === 'apartment'} onChange={() => setPropertyType('apartment')} />
-                Apartment
+                <span class="ml-2">Apartment</span>
               </label>
               <label>
                 <input type="radio" value="condo" checked={propertyType === 'condo'} onChange={() => setPropertyType('condo')} />
-                Condo
+                <span class="ml-2">Condo</span>
               </label>
-              <label>
+              <label className="flex mx-5 items-center">
                 <input type="radio" value="room" checked={propertyType === 'room'} onChange={() => setPropertyType('room')} />
-                Room
+                <span class="ml-2">Room</span>
               </label>
               <label>
                 <input type="radio" value="other" checked={propertyType === 'other'} onChange={() => setPropertyType('other')} />
-                Other
+                <span class="ml-2">Other</span>
               </label>
             </div>
             <div>
-              <label>
-                Tenancy Start Date:
-                <input type="date" value={tenancyStart} onChange={(event) => setTenancyStart(event.target.value)} />
+              <label className="flex items-center">
+                <h3 className=" ml-20 mr-5 mt-2 mb-2 font-bold">Tenancy Start Date:</h3>
+                <input type="date" value={tenancyStart} onChange={(event) => setTenancyStart(event.target.value)} className="rounded-full border-gray-300 bg-gray-100 pl-4 pr-4 py-2" />
               </label>
             </div>
             <div>
-              <label htmlFor="tenancy-end-date">Tenancy End Date:</label>
-              <input type="date" name="tenancy-end-date" value={tenancyEndDate} onChange={(e) => setTenancyEndDate(e.target.value)} />
+              <label className="flex items-center">
+                <h3 className=" ml-20 mr-5 mt-2 mb-2 font-bold">Tenancy Start Date:</h3>
+                <input type="date" name="tenancy-end-date" value={tenancyEndDate} onChange={(e) => setTenancyEndDate(e.target.value)} className="rounded-full border-gray-300 bg-gray-100 mt-2 pl-4 pr-4 py-2" />
+              </label>
             </div>
           </fieldset>
         );
@@ -107,28 +113,31 @@ function TemplateForm() {
         return (
           //Property section 
           <fieldset>
-            <legend>2.0 Property</legend>
-            <div>
-              <label>
-                Property address:
-                <input type="text" value={propertyAddress} onChange={(event) => setPropertyAddress(event.target.value)} />
+            <legend className="mx-20 font-bold text-2xl">2.0 Property</legend>
+            <div className="flex items-center">
+              <label className="flex items-center">
+              <h3 className=" ml-20 mr-2 mt-3 font-bold">Property address:</h3>
+                <input type="text" value={propertyAddress} 
+                onChange={(event) => setPropertyAddress(event.target.value)} 
+                className="border border-gray-700 rounded px-3 py-1 mt-3"/>
               </label>
             </div>
             <div>
               <label>
-                Will tenant have access to parking?
-                <input type="radio" value="yes" checked={hasParking} onChange={() => setHasParking(true)} />
+              <h3 className=" mx-20 mb-2 mt-2 font-bold">Will tenant have access to parking?</h3>
+                
+                <input className=" ml-20 mr-2 mb-2 font-bold" type="radio" value="yes" checked={hasParking} onChange={() => setHasParking(true)} />
                 Yes
-                <input type="radio" value="no" checked={!hasParking} onChange={() => setHasParking(false)} />
+                <input className=" ml-10 mr-2 mb-2 font-bold" type="radio" value="no" checked={!hasParking} onChange={() => setHasParking(false)} />
                 No
               </label>
             </div>
             <div>
               <label>
-                Does the property include any furnishing?
-                <input type="radio" value="yes" checked={hasFurnishing} onChange={() => setHasFurnishing(true)} />
+              <h3 className=" mx-20 mb-2 font-bold">Does the property include any furnishing?</h3>
+                <input className=" ml-20 mr-2 mb-2 font-bold" type="radio" value="yes" checked={hasFurnishing} onChange={() => setHasFurnishing(true)} />
                 Yes
-                <input type="radio" value="no" checked={!hasFurnishing} onChange={() => setHasFurnishing(false)} />
+                <input className=" ml-10 mr-2 mb-2 font-bold" type="radio" value="no" checked={!hasFurnishing} onChange={() => setHasFurnishing(false)} />
                 No
               </label>
             </div>
@@ -138,72 +147,82 @@ function TemplateForm() {
         return (
           //Parties section
           <fieldset>
-            <legend>3.0 Parties</legend>
+            <legend className="mx-20 font-bold text-2xl">3.0 Parties</legend>
             <div>
-              <legend>Landlord Details</legend>
+            <h3 className=" mx-20 mt-3 font-bold">Landlord Details</h3>
               <div>
-                <label>
-                  <input type="radio" value="individual" checked={landlordType === 'individual'} onChange={() => setLandlordType('individual')} />
-                  Individual
+                <label className="flex mx-20 items-center">
+                  <input type="radio" value="individual" checked={landlordType === 'individual'} onChange={() => setLandlordType('individual')}  />
+                  <span class="ml-2">Individual</span>
                 </label>
-                <label>
+                <label className="flex mx-20 items-center">
                   <input type="radio" value="company" checked={landlordType === 'company'} onChange={() => setLandlordType('company')} />
-                  Company/Organization
+                  <span class="ml-2">Company/Organization</span>
                 </label>
               </div>
-              <div>
-                <label>
-                  Name:
-                  <input type="text" value={landlordName} onChange={(event) => setLandlordName(event.target.value)} />
+              <div className="flex items-center">
+                <label className="flex items-center">
+                <h3 className=" ml-20 mr-2 mt-3 font-bold">Name: </h3>
+                  <input type="text" value={landlordName} onChange={(event) => setLandlordName(event.target.value)} 
+                  className="border border-gray-700 rounded px-3 py-1 mt-3"/>
                 </label>
               </div>
-              <div>
-                <label>
-                  Address:
-                  <input type="text" value={landlordAddress} onChange={(event) => setLandlordAddress(event.target.value)} />
+              <div className="flex items-center">
+                <label className="flex items-center">
+                <h3 className=" ml-20 mr-2 mt-3 font-bold">Address: </h3>
+                  
+                  <input type="text" value={landlordAddress} onChange={(event) => setLandlordAddress(event.target.value)} 
+                  className="border border-gray-700 rounded px-3 py-1 mt-3"/>
                 </label>
               </div>
-              <div>
-                <label>
-                  Contact phone:
-                  <input type="text" value={landlordPhone} onChange={(event) => setLandlordPhone(event.target.value)} />
+              <div className="flex items-center">
+                <label className="flex items-center">
+                <h3 className=" ml-20 mr-2 mt-3 font-bold">Contact phone: </h3>
+
+                  <input type="text" value={landlordPhone} onChange={(event) => setLandlordPhone(event.target.value)} 
+                  className="border border-gray-700 rounded px-3 py-1 mt-3"/>
                 </label>
               </div>
-              <div>
-                <label>
-                  Contact email (optional):
-                  <input type="text" value={landlordEmail} onChange={(event) => setLandlordEmail(event.target.value)} />
+              <div className="flex items-center">
+                <label className="flex items-center">
+                <h3 className=" ml-20 mr-2 mt-3 font-bold">Contact email (optional): </h3>
+                  
+                  <input type="text" value={landlordEmail} onChange={(event) => setLandlordEmail(event.target.value)} 
+                  className="border border-gray-700 rounded px-3 py-1 mt-3"/>
                 </label>
               </div>
             </div>
             <div>
-              <legend>Tenant Details</legend>
-              <div>
-                <label>
-                  Name:
-                  <input type="text" value={tenantName} onChange={(event) => setTenantName(event.target.value)} />
+            <h3 className=" mx-20 mt-10 font-bold">Tenant Details</h3>
+              <div className="flex items-center">
+                <label className="flex items-center">
+                <h3 className="ml-20 mr-2 mt-3 font-bold">Name:</h3>
+                  <input type="text" value={tenantName} onChange={(event) => setTenantName(event.target.value)} 
+                  className="border border-gray-700 rounded px-3 py-1 mt-3"/>
                 </label>
               </div>
-              <div>
-                <label>
-                  Contact phone:
-                  <input type="text" value={tenantPhone} onChange={(event) => setTenantPhone(event.target.value)} />
+              <div className="flex items-center">
+                <label className="flex items-center">
+                <h3 className="ml-20 mr-2 mt-3 font-bold">Contact phone:</h3>
+                  <input type="text" value={tenantPhone} onChange={(event) => setTenantPhone(event.target.value)} 
+                  className="border border-gray-700 rounded px-3 py-1 mt-3"/>
                 </label>
               </div>
-              <div>
-                <label>
-                  Contact email (optional):
-                  <input type="text" value={tenantEmail} onChange={(event) => setTenantEmail(event.target.value)} />
+              <div className="flex items-center">
+                <label className="flex items-center">
+                <h3 className="ml-20 mr-2 mt-3 font-bold">Contact email (optional):</h3>
+                  <input type="text" value={tenantEmail} onChange={(event) => setTenantEmail(event.target.value)} 
+                  className="border border-gray-700 rounded px-3 py-1 mt-3"/>
                 </label>
               </div>
               {otherTenants.map((otherTenant, index) => (
                 <div key={index
 
                 }>
-                  <legend>Other Tenant {index + 1}</legend>
-                  <div>
-                    <label>
-                      Name:
+                  <legend className=" mx-20 mt-8 font-bold">Other Tenant {index + 1}</legend>
+                  <div className="flex items-center">
+                    <label className="flex items-center">
+                    <h3 className="ml-20 mr-2 mt-3 font-bold">Name:</h3>
                       <input
                         type="text"
                         value={otherTenant.name}
@@ -211,13 +230,13 @@ function TemplateForm() {
                           const updatedTenants = [...otherTenants];
                           updatedTenants[index].name = event.target.value;
                           setOtherTenants(updatedTenants);
-                        }}
+                        }} className="border border-gray-700 rounded px-3 py-1 mt-3"
                       />
                     </label>
                   </div>
-                  <div>
-                    <label>
-                      Contact phone:
+                  <div className="flex items-center">
+                    <label className="flex items-center">
+                    <h3 className="ml-20 mr-2 mt-3 font-bold">Contact phone:</h3>
                       <input
                         type="text"
                         value={otherTenant.phone}
@@ -225,13 +244,13 @@ function TemplateForm() {
                           const updatedTenants = [...otherTenants];
                           updatedTenants[index].phone = event.target.value;
                           setOtherTenants(updatedTenants);
-                        }}
+                        }} className="border border-gray-700 rounded px-3 py-1 mt-3"
                       />
                     </label>
                   </div>
-                  <div>
-                    <label>
-                      Contact email (optional):
+                  <div className="flex items-center">
+                    <label className="flex items-center">
+                    <h3 className="ml-20 mr-2 mt-3 font-bold">Contact email (optional):</h3>
                       <input
                         type="text"
                         value={otherTenant.email}
@@ -239,25 +258,25 @@ function TemplateForm() {
                           const updatedTenants = [...otherTenants];
                           updatedTenants[index].email = event.target.value;
                           setOtherTenants(updatedTenants);
-                        }}
+                        }} className="border border-gray-700 rounded px-3 py-1 mt-3"
                       />
                     </label>
                   </div>
-                  <button type="button" onClick={() => handleRemoveTenant(index)}>
+                  <button type="button" onClick={() => handleRemoveTenant(index)} className="bg-red-500 hover:bg-red-400 text-white hover:text-white py-1 px-2 ml-20 mt-2 border border-red-500 hover:border-transparent rounded">
                     Remove
                   </button>
                 </div>
               ))}
-              <button type="button" onClick={handleAddTenant}>
+              <button type="button" onClick={handleAddTenant} className="bg-blue-500 hover:bg-blue-400 text-white hover:text-white py-1 px-2 ml-20 mt-2 border border-blue-500 hover:border-transparent rounded">
                 Add Another Tenant
               </button>
             </div>
             <div>
               <label>
-                Will any occupants be allowed to stay on the property?
-                <input type="radio" value="yes" checked={allowOccupants} onChange={() => setAllowOccupants(true)} />
+              <h3 className="ml-20 mr-2 mt-10 font-bold">Will any occupants be allowed to stay on the property?</h3>
+                <input className=" ml-20 mr-2 mb-2 font-bold" type="radio" value="yes" checked={allowOccupants} onChange={() => setAllowOccupants(true)} />
                 Yes
-                <input type="radio" value="no" checked={!allowOccupants} onChange={() => setAllowOccupants(false)} />
+                <input className=" ml-10 mr-2 mb-2 font-bold" type="radio" value="no" checked={!allowOccupants} onChange={() => setAllowOccupants(false)} />
                 No
               </label>
               {allowOccupants && (
@@ -324,12 +343,13 @@ function TemplateForm() {
         return (
           //4.0 Term section
           <fieldset>
-            <legend>4.0 Terms</legend>
-            <div>
-              <label>
-                Rent Payment Frequency:
+            <legend className="mx-20 font-bold text-2xl">4.0 Terms</legend>
+            <div className="flex items-center">
+              <label className="flex items-center">
+              <h3 className="ml-20 mr-2 mt-3 font-bold">Rent Payment Frequency:</h3>
                 <select
                   value={rentPaymentFrequency}
+                  className="border-2 mt-3 border-gray-800 rounded py-1"
                   onChange={(event) => setRentPaymentFrequency(event.target.value)}
                 >
                   <option value="monthly">Monthly</option>
@@ -339,21 +359,22 @@ function TemplateForm() {
             </div>
 
 
-            <div>
-              <label>
-                Rent Amount:
+            <div className="flex items-center">
+              <label className="flex items-center">
+              <h3 className="ml-20 mr-2 mt-3 font-bold">Rent Amount:</h3>
                 <input
-                  type="text" value={rentAmount} onChange={(event) => setRentAmount(event.target.value)} />
+                  type="text" value={rentAmount} onChange={(event) => setRentAmount(event.target.value)} 
+                  className="border border-gray-700 rounded px-3 py-1 mt-3"/>
               </label>
             </div>
             {rentPaymentFrequency === 'monthly' && (
-              <div>
-                <label>
-                  Rent Payment Date:
+              <div className="flex items-center">
+                <label className="flex items-center">
+                <h3 className="ml-20 mr-2 mt-3 font-bold">Rent Payment Date:</h3>
                   <input
                     type="date"
                     value={rentPaymentDate}
-                    onChange={(event) => setRentPaymentDate(event.target.value)}
+                    onChange={(event) => setRentPaymentDate(event.target.value)} className="rounded-full border-gray-300 mt-3 bg-gray-100 pl-4 pr-4 py-2"
                   />
                 </label>
               </div>
@@ -362,10 +383,10 @@ function TemplateForm() {
 
             <div>
               <label>
-                Does the tenant need to pay utilities by themselves?
-                <input type="radio" value="yes" checked={payUtilities} onChange={() => setPayUtilities(true)} />
+              <h3 className="ml-20 mr-2 mt-3 font-bold">Does the tenant need to pay utilities by themselves?</h3>
+                <input className=" ml-20 mr-2 mb-2 font-bold" type="radio" value="yes" checked={payUtilities} onChange={() => setPayUtilities(true)} />
                 Yes
-                <input type="radio" value="no" checked={!payUtilities} onChange={() => setPayUtilities(false)}
+                <input className=" ml-10 mr-2 mb-2 font-bold" type="radio" value="no" checked={!payUtilities} onChange={() => setPayUtilities(false)}
                 />
                 No
               </label>
@@ -374,11 +395,12 @@ function TemplateForm() {
 
             <div>
               <label>
-                Are pets allowed?
-                <input type="radio" value="yes" checked={allowPets} onChange={() => setAllowPets(true)}
+              <h3 className="ml-20 mr-2 mt-3 font-bold">Are pets allowed?</h3>
+
+                <input className=" ml-20 mr-2 mb-2 font-bold" type="radio" value="yes" checked={allowPets} onChange={() => setAllowPets(true)}
                 />
                 Yes
-                <input type="radio" value="no" checked={!allowPets} onChange={() => setAllowPets(false)} />
+                <input className=" ml-10 mr-2 mb-2 font-bold" type="radio" value="no" checked={!allowPets} onChange={() => setAllowPets(false)} />
                 No
               </label>
             </div>
@@ -386,10 +408,10 @@ function TemplateForm() {
 
             <div>
               <label>
-                Is smoking permitted indoors?
-                <input type="radio" value="yes" checked={allowSmoking} onChange={() => setAllowSmoking(true)} />
+              <h3 className="ml-20 mr-2 mt-3 font-bold">Is smoking permitted indoors?</h3>
+                <input className=" ml-20 mr-2 mb-2 font-bold" type="radio" value="yes" checked={allowSmoking} onChange={() => setAllowSmoking(true)} />
                 Yes
-                <input type="radio" value="no" checked={!allowSmoking} onChange={() => setAllowSmoking(false)} />
+                <input className=" ml-10 mr-2 mb-2 font-bold" type="radio" value="no" checked={!allowSmoking} onChange={() => setAllowSmoking(false)} />
                 No
               </label>
             </div>
@@ -397,10 +419,11 @@ function TemplateForm() {
 
             <div>
               <label>
-                Will the tenant be responsible for any maintenance?
-                <input type="radio" value="yes" checked={responsibilityForMaintenance} onChange={() => setResponsibilityForMaintenance(true)} />
+              <h3 className="ml-20 mr-2 mt-3 font-bold">Will the tenant be responsible for any maintenance?</h3>
+                
+                <input className=" ml-20 mr-2 mb-2 font-bold" type="radio" value="yes" checked={responsibilityForMaintenance} onChange={() => setResponsibilityForMaintenance(true)} />
                 Yes
-                <input type="radio" value="no" checked={!responsibilityForMaintenance} onChange={() => setResponsibilityForMaintenance(false)} />
+                <input className=" ml-10 mr-2 mb-2 font-bold" type="radio" value="no" checked={!responsibilityForMaintenance} onChange={() => setResponsibilityForMaintenance(false)} />
                 No
               </label>
             </div>
@@ -408,10 +431,10 @@ function TemplateForm() {
 
             <div>
               <label>
-                Are home businesses allowed?
-                <input type="radio" value="yes" checked={allowHomeBusiness} onChange={() => setAllowHomeBusiness(true)} />
+              <h3 className="ml-20 mr-2 mt-3 font-bold">Are home businesses allowed?</h3>
+                <input className=" ml-20 mr-2 mb-2 font-bold" type="radio" value="yes" checked={allowHomeBusiness} onChange={() => setAllowHomeBusiness(true)} />
                 Yes
-                <input type="radio" value="no" checked={!allowHomeBusiness} onChange={() => setAllowHomeBusiness(false)} />
+                <input className=" ml-10 mr-2 mb-2 font-bold" type="radio" value="no" checked={!allowHomeBusiness} onChange={() => setAllowHomeBusiness(false)} />
                 No
               </label>
             </div>
@@ -426,18 +449,32 @@ function TemplateForm() {
       {renderFormFields()}
 
       {/* Pagination buttons */}
-      <div>
-        {currentPage > 1 && (
-          <button type="button" onClick={handlePrevious}>
-            Previous
-          </button>
+      <div className="flex mt-5 justify-between">
+        {currentPage >= 1 && (
+          <div className="flex ml-5">
+            <button type="button" onClick={handlePrevious} disabled={currentPage === 1} className={`bg-amber-900 hover:bg-yellow-800 text-white py-2 border-l border-gray-200  hover:text-white rounded-l-md border-r px-3 ${currentPage === 1 ? 'hidden' : ''}`}>
+              <div class="flex flex-row align-middle">
+                <svg class="w-5 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd"></path>
+                </svg>
+                <p class="ml-2">Prev</p>
+              </div>
+            </button>
+          </div>
         )}
         {currentPage < totalPages ? (
-          <button type="button" onClick={handleNext}>
-            Next
-          </button>
+          <div class="flex mr-5">
+            <button type="button" onClick={handleNext} class="bg-amber-900 hover:bg-yellow-800 text-white rounded-r-md py-2 border-l border-gray-200  hover:text-white px-3">
+              <div class="flex flex-row align-middle">
+                <span class="mr-2">Next</span>
+                <svg class="w-5 ml-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                </svg>
+              </div>
+            </button>
+          </div>
         ) : (
-          <button type="submit">Submit</button>
+          <button type="submit" class="bg-green-800 hover:bg-green-500 mr-5  text-white rounded-md py-2 border-l border-gray-200  hover:text-white px-3">Submit</button>
         )}
       </div>
     </form>
