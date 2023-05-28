@@ -9,7 +9,6 @@ export default function LandingPage() {
                         type="text"
                         id="search-btn"
                         placeholder="Enter location"
-
                     />
                     <button type="submit">Search</button>
                 </form>

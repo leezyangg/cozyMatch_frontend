@@ -9,6 +9,7 @@ import LandingPage from "./views/LandingPage";
 import RoomListing from "./views/RoomListing";
 import RoommateMatching from "./views/RoommateMatching";
 import RenterHomePage from "./views/RenterHomePage";
+import RoomDetail from "./views/RoomDetailPage";
 
 const router = createBrowserRouter([
     // Guest Login
@@ -42,6 +43,11 @@ const router = createBrowserRouter([
                 path: '/renterHomePage',
                 element: <RenterHomePage />
             },
+            {
+                path: '/room-detail/:roomId',
+                element: <RoomDetail />,
+            }
+              
         ],
     },
 
@@ -69,7 +75,8 @@ const router = createBrowserRouter([
             {
                 path:'/roomlist',
                 element: <RoomListing />,
-            }
+            },
+
         ],
     }
 ])
