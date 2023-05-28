@@ -101,8 +101,7 @@ export default function MapComponent() {
                   image: new Icon({
                     anchor: [0.5, 1],
                     src: '/src/assets/pinRoom.png', // Replace with the correct path to your pinRoom.png icon
-                    scale: [0.3,0.2],
-                    imgSize: [20, 10],
+                    scale: [0.2,0.1],
                     offset: [0, -25], // Move the image slightly upwards
                   }),
                   text: new Text({
