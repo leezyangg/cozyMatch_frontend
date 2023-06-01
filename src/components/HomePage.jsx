@@ -1,6 +1,5 @@
 import { BiSearchAlt2 } from 'react-icons/bi'
 import backgroundImage from '../assets/bgroom.jpg'
-import 'typeface-eb-garamond'; // Import the 'EB Garamond' font
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import RenterHomePage from "../views/RenterHomePage";
 

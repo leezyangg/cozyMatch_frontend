@@ -112,7 +112,7 @@ const ExportPDF = async (formData) => {
     // Download the PDF with the filename tenantnameRA.pdf
     const downloadLink = document.createElement('a');
     downloadLink.href = dataUrl;
-    downloadLink.download = `${tenantName}RA.pdf`;
+    downloadLink.download = `${tenantName} RA.pdf`;
     downloadLink.style.display = 'none';
     document.body.appendChild(downloadLink);
     downloadLink.click();
