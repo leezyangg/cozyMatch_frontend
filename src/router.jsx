@@ -13,6 +13,7 @@ import RoomDetail from "./views/RoomDetailPage";
 import RoommateMatchQuestion from "./components/RoommateMatchQuestion";
 
 const router = createBrowserRouter([
+
     // Guest Login
     {
         path:'/',
@@ -25,7 +26,7 @@ const router = createBrowserRouter([
         element: <UserLayout />,
         children: [
             {
-                path:'/user',
+                path:'/renter',
                 element: <Navigate to="/homepage" />
             },
             {

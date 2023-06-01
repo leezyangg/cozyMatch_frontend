@@ -1,4 +1,81 @@
+import { useDispatch } from 'react-redux';
+import { useNavigate } from "react-router-dom";
+import { setUser } from '../redux/auth'; // Import setUser from auth.jsx
+
+
 export default function LoginPage() {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const onSubmit = async (e) => {
+        e.preventDefault();
+        const username = e.target.elements.username.value;
+        const password = e.target.elements.password.value;
+
+        // renter login 
+        if (username === 'renter' && password === 'renter') {
+            // Authentication successful
+            const userData = {
+                name: username,
+                usertype: 'Renter', // Replace with the actual user type
+            };
+
+            // Dispatch the setUser action to update the user state
+            dispatch(setUser(userData));
+
+            // Simulate navigation to the next page
+            // Replace '/dashboard' with the desired route
+            navigate("/renter");
+        } else {
+            // Authentication failed
+            console.log('Login failed');
+        }
+
+        // landlord login 
+        if (username === 'landlord' && password === 'landlord') {
+            // Authentication successful
+            const userData = {
+                username,
+                usertype: 'Landlord', // Replace with the actual user type
+            };
+
+            // Dispatch the setUser action to update the user state
+            dispatch({ type: 'auth/setUser', payload: userData });
+
+            // Simulate navigation to the next page
+            // Replace '/dashboard' with the desired route
+            navigate("/landlord");
+        } else {
+            // Authentication failed
+            console.log('Login failed');
+        }
+
+        // Real Part will be used 
+        // try {
+        //     // Make an API call to authenticate the user
+        //     const response = await fetch('/api/login', {
+        //         method: 'POST',
+        //         body: JSON.stringify({ username, password }),
+        //     });
+
+        //     if (response.ok) {
+        //         // Authentication successful
+        //         const userData = {
+        //             username,
+        //             usertype: 'Renter', // Replace with the actual user type
+        //         };
+
+        //         // Dispatch the setUser action to update the user state
+        //         dispatch({ type: 'auth/setUser', payload: userData });
+        //     } else {
+        //         // Authentication failed
+        //         console.log('Login failed');
+        //     }
+        // } catch (error) {
+        //     console.log('Error occurred during login:', error);
+        // }
+    };
+
     return (
         <div>
             <div className="flex pl-4 pr-4 pt-12 pb-12 justify-center items-center min-h-full">
@@ -14,21 +91,21 @@ export default function LoginPage() {
                         Sign in to your account
                     </h2>
 
-                    <form className="mt-8 space-y-6" action="#" method="POST">
+                    <form className="mt-8 space-y-6" onSubmit={onSubmit}>
                         <input type="hidden" name="remember" defaultValue="true" />
                         <div className="-space-y-px rounded-md shadow-sm">
                             <div>
                                 <label htmlFor="email-address" className="sr-only">
-                                    Email address
+                                    Username
                                 </label>
                                 <input
-                                    id="email-address"
-                                    name="email"
-                                    type="email"
+                                    id="username"
+                                    name="username"
+                                    type="username"
                                     autoComplete="email"
                                     required
                                     className="relative block w-full rounded-t-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                    placeholder="Email address"
+                                    placeholder="username"
                                 />
                             </div>
                             <div>

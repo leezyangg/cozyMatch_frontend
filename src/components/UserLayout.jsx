@@ -1,8 +1,8 @@
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { Menu } from '@headlessui/react'
 
 const navigation = [
-    { name: 'Home', to: '/user' },
+    { name: 'Home', to: '/renter' },
     { name: 'Roommate Match', to: '/roommateMatchQuestion' },
     { name: 'Room Matching', to: '/renterHomePage' },
 ]
@@ -10,18 +10,16 @@ const navigation = [
 const user = {
     name: 'Gray Young',
     userType: 'Renter',
-    email: 'gray_Young@example.com',
     imageUrl:
         'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
 }
 
-const logout = (ev) => {
-    ev.preventDefault();
-    console.log("logout");
-}
-
-
 export default function UserLayout() {
+    const navigate = useNavigate();
+    const logout = (ev) => {
+        ev.preventDefault();
+        navigate("/");
+    }
     return (
         <>
             <div className="flex items-center h-16 text-black mb-8 shadow-lg py-10 px-5">

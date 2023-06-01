@@ -1,4 +1,4 @@
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { Menu } from '@headlessui/react'
 
 const navigation = [
@@ -15,13 +15,12 @@ const user = {
         'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
 }
 
-const logout = (ev) => {
-    ev.preventDefault();
-    console.log("logout");
-}
-
-
 export default function LandlordLayout() {
+    const navigate = useNavigate();
+    const logout = (ev) => {
+        ev.preventDefault();
+        navigate("/");
+    }
     return (
         <>
             <div className="flex items-center h-16 text-black mb-8 shadow-lg py-10 px-5">
