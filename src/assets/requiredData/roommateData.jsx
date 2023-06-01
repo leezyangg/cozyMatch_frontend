@@ -1,5 +1,6 @@
 export default [
     {
+        // The database created must having these... and can refer to the RoomDetainPage.jsx to see the mockData there also
         id: 1,
         img: "",
         name: "Izrin",

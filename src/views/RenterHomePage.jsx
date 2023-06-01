@@ -2,9 +2,18 @@ import Map from "../components/Map";
 import { useState } from 'react'
 import { Switch } from '@headlessui/react'
 import AvailableRoomCard from "../components/AvailableRoomCard";
+import availableRooms from "../assets/requiredData/roomDetailData";
 
 
 export default function RenterHomePage() {
+  const availableRoomCard = availableRooms.map(availableRoom => {
+    return (
+        <AvailableRoomCard
+            key={availableRoom.id}
+            {...availableRoom}
+        />
+    )
+})
   const [enabled, setEnabled] = useState(false)
   //click switch button
 
@@ -41,7 +50,7 @@ export default function RenterHomePage() {
             </div>
             <div className="flex border rounded-md px-3 py-1 border-gray-700 space-x-1 items-center cursor-pointer">
               <img src="src/assets/images/Apartment.png" alt="Price" className="h-3" />
-              <h4 className="text-xs">Appartment</h4>
+              <h4 className="text-xs">Apartment</h4>
             </div>
             <div className="flex border rounded-md px-3 py-1 border-gray-700 space-x-1 items-center cursor-pointer">
               <img src="src/assets/images/Floor.png" alt="Price" className="h-3" />
@@ -52,10 +61,9 @@ export default function RenterHomePage() {
               <h4 className="text-xs">More</h4>
             </div>
           </div>
-          <div className="">
+          <div className="overflow-y-auto max-h-[530px] my-2">
             <div className="flex flex-col">
-              <AvailableRoomCard />
-              <AvailableRoomCard />
+            {availableRoomCard}
             </div>
           </div>
         </div>
