@@ -1,7 +1,15 @@
 import loginImg from '../assets/room.jpg'
 import {BsUpload} from 'react-icons/bs'
+import { Routes, Route, useNavigate } from 'react-router-dom';
+import RoomListing from "../views/RoomListing";
 
 export default function AddRoom() {
+    const navigate = useNavigate();
+
+    const navigateToRoomListing = () => {
+        // 👇️ navigate to /contacts
+        navigate('/roomlist');
+    };
     return (
         <div className='grid gird-cols-1 sm:grid-cols-2 h-screen w-full'>
             <div className='hidden sm:block'><img className='w-full h-full object-cover' src={loginImg} alt="" /></div>
@@ -124,7 +132,11 @@ export default function AddRoom() {
                             <input type="checkbox" /> I agree to the terms and conditions of CozyMatch{' '}
                             <span className="text-red-600">*</span>
                         </p>
-                        <button className='border w-full my-5 py-2 bg-amber-900 hover:bg-yellow-800 text-white'>Submit</button>
+                        <button className='border w-full my-5 py-2 bg-amber-900 hover:bg-yellow-800 text-white' onClick={navigateToRoomListing}>Submit</button>
+                        <Routes>
+                        <Route path="/roomlist" element={<RoomListing />} />
+
+                    </Routes>
                     </div>
                 </form>
             </div>

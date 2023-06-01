@@ -9,6 +9,8 @@ import LandingPage from "./views/LandingPage";
 import RoomListing from "./views/RoomListing";
 import RoommateMatching from "./views/RoommateMatching";
 import RenterHomePage from "./views/RenterHomePage";
+import RoomDetail from "./views/RoomDetailPage";
+import RoommateMatchQuestion from "./components/RoommateMatchQuestion";
 
 const router = createBrowserRouter([
     // Guest Login
@@ -35,6 +37,10 @@ const router = createBrowserRouter([
                 element: <LandingPage />,
             },
             {
+                path: '/roommateMatchQuestion',
+                element: <RoommateMatchQuestion />
+            },
+            {
                 path: '/roommateMatch',
                 element: <RoommateMatching />
             },
@@ -42,6 +48,11 @@ const router = createBrowserRouter([
                 path: '/renterHomePage',
                 element: <RenterHomePage />
             },
+            {
+                path: '/room-detail/:roomId',
+                element: <RoomDetail />,
+            }
+              
         ],
     },
 
@@ -52,11 +63,11 @@ const router = createBrowserRouter([
         children: [
             {
                 path:'/landlord',
-                element: <Navigate to="/tem" />
+                element: <Navigate to="/landlordhomepage" />
             },
             {
-                path:'/tem',
-                element: <AddRoom />,
+                path:'/landlordhomepage',
+                element: <RoomListing />,
             },
             {
                 path:'/addroom',
@@ -69,7 +80,8 @@ const router = createBrowserRouter([
             {
                 path:'/roomlist',
                 element: <RoomListing />,
-            }
+            },
+
         ],
     }
 ])

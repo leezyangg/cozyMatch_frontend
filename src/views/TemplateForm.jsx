@@ -106,23 +106,23 @@ function TemplateForm() {
 
               <label>
                 <input type="radio" value="house" checked={propertyType === 'house'} onChange={() => setPropertyType('house')} />
-                <span class="ml-2">House</span>
+                <span className="ml-2">House</span>
               </label>
               <label className="flex mx-5 items-center">
                 <input type="radio" value="apartment" checked={propertyType === 'apartment'} onChange={() => setPropertyType('apartment')} />
-                <span class="ml-2">Apartment</span>
+                <span className="ml-2">Apartment</span>
               </label>
               <label>
                 <input type="radio" value="condo" checked={propertyType === 'condo'} onChange={() => setPropertyType('condo')} />
-                <span class="ml-2">Condo</span>
+                <span className="ml-2">Condo</span>
               </label>
               <label className="flex mx-5 items-center">
                 <input type="radio" value="room" checked={propertyType === 'room'} onChange={() => setPropertyType('room')} />
-                <span class="ml-2">Room</span>
+                <span className="ml-2">Room</span>
               </label>
               <label>
                 <input type="radio" value="other" checked={propertyType === 'other'} onChange={() => setPropertyType('other')} />
-                <span class="ml-2">Other</span>
+                <span className="ml-2">Other</span>
               </label>
             </div>
             <div>
@@ -183,11 +183,11 @@ function TemplateForm() {
               <div>
                 <label className="flex mx-20 items-center">
                   <input type="radio" value="individual" checked={landlordType === 'individual'} onChange={() => setLandlordType('individual')}  />
-                  <span class="ml-2">Individual</span>
+                  <span className="ml-2">Individual</span>
                 </label>
                 <label className="flex mx-20 items-center">
                   <input type="radio" value="company" checked={landlordType === 'company'} onChange={() => setLandlordType('company')} />
-                  <span class="ml-2">Company/Organization</span>
+                  <span className="ml-2">Company/Organization</span>
                 </label>
               </div>
               <div className="flex items-center">
@@ -491,28 +491,28 @@ function TemplateForm() {
         {currentPage >= 1 && (
           <div className="flex ml-5">
             <button type="button" onClick={handlePrevious} disabled={currentPage === 1} className={`bg-amber-900 hover:bg-yellow-800 text-white py-2 border-l border-gray-200  hover:text-white rounded-l-md border-r px-3 ${currentPage === 1 ? 'hidden' : ''}`}>
-              <div class="flex flex-row align-middle">
-                <svg class="w-5 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <div className="flex flex-row align-middle">
+                <svg className="w-5 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                   <path fill-rule="evenodd" d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd"></path>
                 </svg>
-                <p class="ml-2">Prev</p>
+                <p className="ml-2">Prev</p>
               </div>
             </button>
           </div>
         )}
         {currentPage < totalPages ? (
-          <div class="flex mr-5">
+          <div className="flex mr-5">
             <button type="button" onClick={handleNext} class="bg-amber-900 hover:bg-yellow-800 text-white rounded-r-md py-2 border-l border-gray-200  hover:text-white px-3">
-              <div class="flex flex-row align-middle">
-                <span class="mr-2">Next</span>
-                <svg class="w-5 ml-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <div className="flex flex-row align-middle">
+                <span className="mr-2">Next</span>
+                <svg className="w-5 ml-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                   <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
                 </svg>
               </div>
             </button>
           </div>
         ) : (
-          <button type="submit" class="bg-green-800 hover:bg-green-500 mr-5  text-white rounded-md py-2 border-l border-gray-200  hover:text-white px-3">Submit</button>
+          <button type="submit" className="bg-green-800 hover:bg-green-500 mr-5  text-white rounded-md py-2 border-l border-gray-200  hover:text-white px-3">Submit</button>
         )}
 
       </div>
