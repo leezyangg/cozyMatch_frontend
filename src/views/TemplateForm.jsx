@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import ExportPDF from './ExportPDF';
 
 function TemplateForm() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -13,10 +14,11 @@ function TemplateForm() {
   const [hasFurnishing, setHasFurnishing] = useState(false);
   const [landlordType, setLandlordType] = useState('individual');
   const [landlordName, setLandlordName] = useState('');
-  const [landlordAddress, setLandlordAddress] = useState('');
+  const [landlordID, setLandlordID] = useState('');
   const [landlordPhone, setLandlordPhone] = useState('');
   const [landlordEmail, setLandlordEmail] = useState('');
   const [tenantName, setTenantName] = useState('');
+  const [tenantID, settenantID] = useState('');
   const [tenantPhone, setTenantPhone] = useState('');
   const [tenantEmail, setTenantEmail] = useState('');
   const [otherTenants, setOtherTenants] = useState([]);
@@ -55,11 +57,39 @@ function TemplateForm() {
     setOccupants([...occupants.slice(0, index), ...occupants.slice(index + 1)]);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-
-    // Do something with the form data here
-  };
+    const formData = {
+      propertyType,
+      tenancyStart,
+      tenancyEndDate,
+      propertyAddress,
+      hasParking,
+      hasFurnishing,
+      landlordType,
+      landlordName,
+      landlordID,
+      landlordPhone,
+      landlordEmail,
+      tenantName,
+      tenantID,
+      tenantPhone,
+      tenantEmail,
+      otherTenants,
+      allowOccupants,
+      occupants,
+      rentPaymentFrequency,
+      rentAmount,
+      rentPaymentDate,
+      payUtilities,
+      allowPets,
+      allowSmoking,
+      responsibilityForMaintenance,
+      allowHomeBusiness,
+    };
+    ExportPDF(formData);
+  
+  }
 
   // Render form fields based on the current page
   const renderFormFields = () => {
@@ -103,7 +133,7 @@ function TemplateForm() {
             </div>
             <div>
               <label className="flex items-center">
-                <h3 className=" ml-20 mr-5 mt-2 mb-2 font-bold">Tenancy Start Date:</h3>
+                <h3 className=" ml-20 mr-5 mt-2 mb-2 font-bold">Tenancy End Date:</h3>
                 <input type="date" name="tenancy-end-date" value={tenancyEndDate} onChange={(e) => setTenancyEndDate(e.target.value)} className="rounded-full border-gray-300 bg-gray-100 mt-2 pl-4 pr-4 py-2" />
               </label>
             </div>
@@ -169,9 +199,9 @@ function TemplateForm() {
               </div>
               <div className="flex items-center">
                 <label className="flex items-center">
-                <h3 className=" ml-20 mr-2 mt-3 font-bold">Address: </h3>
+                <h3 className=" ml-20 mr-2 mt-3 font-bold">IC Number: </h3>
                   
-                  <input type="text" value={landlordAddress} onChange={(event) => setLandlordAddress(event.target.value)} 
+                  <input type="text" value={landlordID} onChange={(event) => setLandlordID(event.target.value)} 
                   className="border border-gray-700 rounded px-3 py-1 mt-3"/>
                 </label>
               </div>
@@ -198,6 +228,14 @@ function TemplateForm() {
                 <label className="flex items-center">
                 <h3 className="ml-20 mr-2 mt-3 font-bold">Name:</h3>
                   <input type="text" value={tenantName} onChange={(event) => setTenantName(event.target.value)} 
+                  className="border border-gray-700 rounded px-3 py-1 mt-3"/>
+                </label>
+              </div>
+              <div className="flex items-center">
+                <label className="flex items-center">
+                <h3 className=" ml-20 mr-2 mt-3 font-bold">IC Number: </h3>
+                  
+                  <input type="text" value={tenantID} onChange={(event) => settenantID(event.target.value)} 
                   className="border border-gray-700 rounded px-3 py-1 mt-3"/>
                 </label>
               </div>
@@ -476,6 +514,7 @@ function TemplateForm() {
         ) : (
           <button type="submit" class="bg-green-800 hover:bg-green-500 mr-5  text-white rounded-md py-2 border-l border-gray-200  hover:text-white px-3">Submit</button>
         )}
+
       </div>
     </form>
   );
