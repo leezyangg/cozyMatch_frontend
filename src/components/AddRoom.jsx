@@ -9,7 +9,7 @@ export default function AddRoom() {
     const navigateToRoomListing = () => {
         // 👇️ navigate to /contacts
         navigate('/roomlist');
-    };
+    };  
     return (
         <div className='grid gird-cols-1 sm:grid-cols-2 h-screen w-full'>
             <div className='hidden sm:block'><img className='w-full h-full object-cover' src={loginImg} alt="" /></div>

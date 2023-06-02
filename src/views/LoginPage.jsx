@@ -1,7 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 import { login } from '../redux/userSlice';
-import axios from 'axios';
 
 
 export default function LoginPage() {
@@ -12,15 +11,8 @@ export default function LoginPage() {
         e.preventDefault();
         const username = e.target.elements.username.value;
         const password = e.target.elements.password.value;
-        // axios.post(
-        //     'http://localhost:3001/authenticate',
-        //     { username: username }
 
-        // )
-        //     .then(r => ({ ...r.data, secret: username }))
-        //     .catch(e => console.log('error', e))
-
-        // renter login 
+        // renter login
         if (username === 'renter' && password === 'renter') {
             const userData = {
                 name: username,
