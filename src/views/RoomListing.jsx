@@ -1,16 +1,29 @@
-import RoomInfoCard from "../components/RoomInfoCard";
-import listedroom from "../assets/requiredData/roomListData";
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import RoomInfoCard from '../components/RoomInfoCard';
 import { HiLocationMarker } from 'react-icons/hi';
 
-export default function RoomListing() {
-    const listedRoomCard = listedroom.map(listedRoom => {
-        return (
-            <RoomInfoCard
-                key={listedRoom.id}
-                {...listedRoom}
-            />
-        )
-    })
+
+function RoomListing() {
+    const [rooms, setRooms] = useState([]);
+
+    useEffect(() => {
+        // Fetch room listings from backend
+        axios.get('http://localhost:3000/room')
+            .then(response => {
+                setRooms(response.data);
+            })
+            .catch(error => {
+                console.error('Error fetching room listings:', error);
+            });
+    }, []);
+
+    const listedRoomCard = rooms.map(listedRoom => (
+        <RoomInfoCard
+            key={listedRoom.id}
+            {...listedRoom}
+        />
+    ));
 
     return (
         <div>
@@ -23,5 +36,7 @@ export default function RoomListing() {
                 {listedRoomCard}
             </div>
         </div>
-    )
+    );
 }
+
+export default RoomListing;
