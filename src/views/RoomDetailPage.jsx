@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom';
 import { HiLocationMarker } from 'react-icons/hi';
 import { BiBed, BiBath } from 'react-icons/bi';
 import { AiOutlineCar, AiFillStar } from 'react-icons/ai';
+import React, { useEffect } from 'react';
 
 // png here
 import chat from "../assets/images/Chat.png";
@@ -30,24 +31,16 @@ export default function RoomDetail() {
     // Retrieve the roomId from the URL parameters
     const { roomId } = useParams();
 
-    // Fetch room details or use the roomId to display relevant information
-    // const fetchRoomDetails = async () => {
-    //     try {
-    //       // Make an API call or fetch room data from your data source
-    //       const response = await fetch(`/api/rooms/${roomId}`);
-    //       const roomData = await response.json();
+    useEffect(() => {
+        const script = document.createElement('script');
+        script.src = 'https://js.stripe.com/v3/buy-button.js';
+        script.async = true;
+        document.body.appendChild(script);
 
-    //       // Process the roomData and update the component state or render the details directly
-    //       console.log(roomData);
-    //     } catch (error) {
-    //       console.error('Error fetching room details:', error);
-    //     }
-    //   };
-
-    // Call the fetchRoomDetails function when the component mounts
-    // useEffect(() => {
-    //     fetchRoomDetails();
-    // }, []);
+        return () => {
+            document.body.removeChild(script);
+        };
+    }, []);
 
     // Mock data
     const mockRoomData = {
@@ -60,7 +53,7 @@ export default function RoomDetail() {
             '/src/assets/room.jpg',
             '/src/assets/room.jpg',
         ],
-        rentalFee: 1300,
+        rentalFee: 1500,
         bedroom: 5,
         bathroom: 5,
         parking: 5,
@@ -149,7 +142,7 @@ export default function RoomDetail() {
                                 </div>
                             </div>
                             <hr></hr>
-                            <div className='grid grid-cols-2  mt-3'>
+                            <div className='grid grid-cols-3  mt-3'>
                                 <div className='col-span-1'>
                                     <div className='flex flex-col'>
                                         <div className='flex flex-col mb-5'>
@@ -165,6 +158,8 @@ export default function RoomDetail() {
                                             <h4 className='text-sm'>{mockRoomData.vacancy}</h4>
                                         </div>
                                     </div>
+                                    <div>
+                                    </div>
                                 </div>
                                 <div className='col-span-1'>
                                     <div className='flex flex-col'>
@@ -178,6 +173,16 @@ export default function RoomDetail() {
                                         </div>
                                     </div>
                                 </div>
+
+                                <script async
+                                    src="https://js.stripe.com/v3/buy-button.js">
+                                </script>
+
+                                <stripe-buy-button
+                                    buy-button-id="buy_btn_1NEYEJLUWJSa0D8TJAh6jYPW"
+                                    publishable-key="pk_live_51NEQAnLUWJSa0D8TkPBd79cMNuoY2rE00m9vnICeS7OUqenVAxaNtihjWSpJEQhEz5q2rkLNeWqCafq8ijI3VjFU00Hy4crJZ7"
+                                >
+                                </stripe-buy-button>
                             </div>
                         </div>
                     </div>
