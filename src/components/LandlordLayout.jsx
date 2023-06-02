@@ -1,21 +1,18 @@
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { Menu } from '@headlessui/react'
+import { useSelector, useDispatch } from 'react-redux';
 
 const navigation = [
     { name: 'Home', to: '/roomlist' },
     { name: 'Template', to: '/template' },
     { name: 'Add Room', to: '/addroom' },
+    { name: 'Chatting', to: '/chating2' },
 ]
 
-const user = {
-    name: 'Ying Xin',
-    userType: 'Landlord',
-    email: 'hahaha@example.com',
-    imageUrl:
-        'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-}
+const selectUser = (state) => state.auth.user;
 
 export default function LandlordLayout() {
+    const user = useSelector(selectUser);
     const navigate = useNavigate();
     const logout = (ev) => {
         ev.preventDefault();

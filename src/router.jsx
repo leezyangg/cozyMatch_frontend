@@ -11,6 +11,8 @@ import RoommateMatching from "./views/RoommateMatching";
 import RenterHomePage from "./views/RenterHomePage";
 import RoomDetail from "./views/RoomDetailPage";
 import RoommateMatchQuestion from "./components/RoommateMatchQuestion";
+import ChatApp from "./views/ChatApp";
+
 
 const router = createBrowserRouter([
 
@@ -52,8 +54,11 @@ const router = createBrowserRouter([
             {
                 path: '/room-detail/:roomId',
                 element: <RoomDetail />,
-            }
-              
+            },
+            {
+                path: '/chating1',
+                element: <ChatApp />,
+            },
         ],
     },
 
@@ -82,7 +87,10 @@ const router = createBrowserRouter([
                 path:'/roomlist',
                 element: <RoomListing />,
             },
-
+            {
+                path: '/chating2',
+                element: <ChatApp />,
+            },
         ],
     }
 ])

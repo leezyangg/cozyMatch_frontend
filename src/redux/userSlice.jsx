@@ -4,18 +4,21 @@ const initialState = {
     user: null,
 };
 
-const authSlice = createSlice({
+const userSlice = createSlice({
     name: 'auth',
     initialState,
     reducers: {
-        setUser: (state, action) => {
+        login: (state, action) => {
             state.user = action.payload;
         },
-        clearUser: (state) => {
+        logout: (state) => {
             state.user = null;
         },
     },
 });
 
-export const { setUser, clearUser } = authSlice.actions;
-export default authSlice.reducer;
+export const { login, logout } = userSlice.actions;
+
+export const selectUser = (state) => state.user.user;
+
+export default userSlice.reducer;

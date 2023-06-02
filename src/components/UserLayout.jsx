@@ -1,23 +1,25 @@
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { Menu } from '@headlessui/react'
+import { useSelector, useDispatch } from 'react-redux';
+import { logout } from '../redux/userSlice';
+
 
 const navigation = [
     { name: 'Home', to: '/renter' },
     { name: 'Roommate Match', to: '/roommateMatchQuestion' },
     { name: 'Room Matching', to: '/renterHomePage' },
+    { name: 'Chatting', to: '/chating1' },
 ]
 
-const user = {
-    name: 'Gray Young',
-    userType: 'Renter',
-    imageUrl:
-        'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-}
+const selectUser = (state) => state.auth.user;
 
 export default function UserLayout() {
+    const dispatch = useDispatch();
+    const user = useSelector(selectUser);
     const navigate = useNavigate();
     const logout = (ev) => {
         ev.preventDefault();
+        //  dispatch(logout);
         navigate("/");
     }
     return (
@@ -42,6 +44,7 @@ export default function UserLayout() {
                     ))}
                 </div>
 
+                
                 <Menu as="div" className="relative ml-auto flex items-center text-sm">
                     <div className="navbar--user">
                         <Menu.Button className="flex text-sm leading-5 items-center max-w-xs rounded-full">

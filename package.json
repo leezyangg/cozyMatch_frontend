@@ -17,6 +17,8 @@
     "pdf-lib": "^1.17.1",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
+    "react-chat-engine-advanced": "^0.1.28",
+    "react-chat-engine-pretty": "^0.1.8",
     "react-dom": "^18.2.0",
     "react-icons": "^4.8.0",
     "react-redux": "^8.0.7",

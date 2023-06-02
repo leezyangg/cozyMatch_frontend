@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { useNavigate } from "react-router-dom";
-import { setUser } from '../redux/auth'; // Import setUser from auth.jsx
+import { login } from '../redux/userSlice';
+import axios from 'axios';
 
 
 export default function LoginPage() {
@@ -11,69 +12,42 @@ export default function LoginPage() {
         e.preventDefault();
         const username = e.target.elements.username.value;
         const password = e.target.elements.password.value;
+        // axios.post(
+        //     'http://localhost:3001/authenticate',
+        //     { username: username }
+
+        // )
+        //     .then(r => ({ ...r.data, secret: username }))
+        //     .catch(e => console.log('error', e))
 
         // renter login 
         if (username === 'renter' && password === 'renter') {
-            // Authentication successful
             const userData = {
                 name: username,
-                usertype: 'Renter', // Replace with the actual user type
+                userType: 'Renter', 
+                imageUrl:
+                    'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
             };
-
-            // Dispatch the setUser action to update the user state
-            dispatch(setUser(userData));
-
-            // Simulate navigation to the next page
-            // Replace '/dashboard' with the desired route
+            dispatch(login(userData));
             navigate("/renter");
         } else {
-            // Authentication failed
             console.log('Login failed');
         }
 
         // landlord login 
         if (username === 'landlord' && password === 'landlord') {
-            // Authentication successful
             const userData = {
-                username,
-                usertype: 'Landlord', // Replace with the actual user type
+                name: username,
+                userType: 'Landlord', 
+                imageUrl:
+                    'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+            
             };
-
-            // Dispatch the setUser action to update the user state
-            dispatch({ type: 'auth/setUser', payload: userData });
-
-            // Simulate navigation to the next page
-            // Replace '/dashboard' with the desired route
+            dispatch(login(userData));
             navigate("/landlord");
         } else {
-            // Authentication failed
             console.log('Login failed');
         }
-
-        // Real Part will be used 
-        // try {
-        //     // Make an API call to authenticate the user
-        //     const response = await fetch('/api/login', {
-        //         method: 'POST',
-        //         body: JSON.stringify({ username, password }),
-        //     });
-
-        //     if (response.ok) {
-        //         // Authentication successful
-        //         const userData = {
-        //             username,
-        //             usertype: 'Renter', // Replace with the actual user type
-        //         };
-
-        //         // Dispatch the setUser action to update the user state
-        //         dispatch({ type: 'auth/setUser', payload: userData });
-        //     } else {
-        //         // Authentication failed
-        //         console.log('Login failed');
-        //     }
-        // } catch (error) {
-        //     console.log('Error occurred during login:', error);
-        // }
     };
 
     return (
@@ -104,7 +78,7 @@ export default function LoginPage() {
                                     type="username"
                                     autoComplete="email"
                                     required
-                                    className="relative block w-full rounded-t-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                    className="px-3 relative block w-full rounded-t-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                     placeholder="username"
                                 />
                             </div>
@@ -118,7 +92,7 @@ export default function LoginPage() {
                                     type="password"
                                     autoComplete="current-password"
                                     required
-                                    className="relative block w-full rounded-b-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                    className="px-3 relative block w-full rounded-b-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                     placeholder="Password"
                                 />
                             </div>
