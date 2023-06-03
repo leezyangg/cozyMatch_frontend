@@ -1,28 +1,40 @@
 import Map from "../components/Map";
-import { useState } from 'react'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import { Switch } from '@headlessui/react'
 import AvailableRoomCard from "../components/AvailableRoomCard";
 import availableRooms from "../assets/requiredData/roomDetailData";
 
-
 export default function RenterHomePage() {
-  const availableRoomCard = availableRooms.map(availableRoom => {
-    return (
-        <AvailableRoomCard
-            key={availableRoom.id}
-            {...availableRoom}
-        />
-    )
-})
-  const [enabled, setEnabled] = useState(false)
-  //click switch button
+  const [rooms, setRooms] = useState([]);
+
+  useEffect(() => {
+    // Fetch room listings from backend
+    axios.get('http://localhost:3000/room')
+      .then(response => {
+        setRooms(response.data);
+      })
+      .catch(error => {
+        console.error('Error fetching room listings:', error);
+      });
+  }, []);
+
+  const availableRoomCard = rooms.map(availableRoom => (
+    <AvailableRoomCard
+      key={availableRoom.id}
+      {...availableRoom}
+    />
+  ));
+
+  const [enabled, setEnabled] = useState(false);
+  // click switch button
 
   return (
     <div className="px-7">
       <div className="grid grid-cols-2 gap-10">
         <div className="flex flex-col">
           <div className="flex items-center">
-            <h4 className="font-semibold">Accomodation in Serdang</h4>
+            <h4 className="font-semibold">Accommodation in Serdang</h4>
             <div className="ml-auto items-center">
               <div className="flex items-center space-x-2">
                 <h4>Roommate</h4>
@@ -63,7 +75,7 @@ export default function RenterHomePage() {
           </div>
           <div className="overflow-y-auto max-h-[530px] my-2">
             <div className="flex flex-col">
-            {availableRoomCard}
+              {availableRoomCard}
             </div>
           </div>
         </div>

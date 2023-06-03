@@ -1,6 +1,27 @@
-export default [
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+
+function roomDetailData() {
+    const [rooms, setRooms] = useState([]);
+
+    useEffect(() => {
+        // Fetch room listings from backend
+        axios.get('http://localhost:3000/room')
+            .then(response => {
+                setRooms(response.data);
+            })
+            .catch(error => {
+                console.error('Error fetching room listings:', error);
+            });
+    }, []);
+
+    return rooms;
+}
+
+export default roomDetailData;
+/*export default [
     {
-        id: 1,
+        id: o,
         img: "src/assets/room.jpg",
         propertyName: "Block 1 Flat Sri Serdang",
         address: "Taman Sri Serdang, Sri Kembangan, Selangor",
@@ -68,4 +89,4 @@ export default [
         parking: 3,
         availability: false,
     },
-]
+]*/

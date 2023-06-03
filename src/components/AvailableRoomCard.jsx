@@ -2,11 +2,11 @@
 import { HiLocationMarker } from 'react-icons/hi';
 import { AiFillStar } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 export default function AvailableRoomCard(props) {
-
     return (
-        <Link to={`/room-detail/${props.id}`} >
+        <Link to={`/room-detail/${props.Room_ID}`} >
             <div className="flex shadow-xl rounded-xl p-6 bg-slate-300 my-5">
                 <div className=" h-[150px] w-[150px] mr-7">
                     <img src="src/assets/room.jpg" alt="roomlist" className="h-full rounded-xl object-cover" />
@@ -45,10 +45,24 @@ export default function AvailableRoomCard(props) {
                     </div>
                 </div>
                 <div className='flex flex-col ml-auto'>
-                    <h4 className='mt-auto'>RM700/month</h4>
+                    <h4 className='mt-auto'>RM{props.rentalFee}/month</h4>
                 </div>
             </div>
         </Link>
 
     )
 }
+
+AvailableRoomCard.propTypes = {
+    //img: PropTypes.string.isRequired,
+    Room_ID: PropTypes.number.isRequired,
+    propertyName: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+    address: PropTypes.string.isRequired,
+    postedDate: PropTypes.string.isRequired,
+    rentalFee: PropTypes.number.isRequired,
+    bedroom: PropTypes.number.isRequired,
+    bathroom: PropTypes.number.isRequired,
+    parking: PropTypes.number.isRequired,
+    availability: PropTypes.bool.isRequired,
+};
