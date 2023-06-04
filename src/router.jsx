@@ -52,7 +52,7 @@ const router = createBrowserRouter([
                 element: <RenterHomePage />
             },
             {
-                path: '/room-detail/:roomId',
+                path: '/room-detail/:Room_ID',
                 element: <RoomDetail />,
             },
             {

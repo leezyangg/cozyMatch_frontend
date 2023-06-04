@@ -28,7 +28,8 @@ import nightOwl from '../assets/images/night-owl-icon.png';
 
 export default function RoomDetail() {
     const { Room_ID } = useParams();
-    /*const [room, setRoom] = useState(null);
+    console.log(Room_ID)
+    const [room, setRoom] = useState(null);
 
     useEffect(() => {
         try {
@@ -52,16 +53,16 @@ export default function RoomDetail() {
         return <div>Loading...</div>;
     }
 
-    useEffect(() => {
-        const script = document.createElement('script');
-        script.src = 'https://js.stripe.com/v3/buy-button.js';
-        script.async = true;
-        document.body.appendChild(script);
+    // useEffect(() => {
+    //     const script = document.createElement('script');
+    //     script.src = 'https://js.stripe.com/v3/buy-button.js';
+    //     script.async = true;
+    //     document.body.appendChild(script);
 
-        return () => {
-            document.body.removeChild(script);
-        };
-    }, []);*/
+    //     return () => {
+    //         document.body.removeChild(script);
+    //     };
+    // }, []);
 
     // Mock data
     const mockRoomData = {
