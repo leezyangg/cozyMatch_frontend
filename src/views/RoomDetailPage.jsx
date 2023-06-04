@@ -1,35 +1,56 @@
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import axios from 'axios';
 import { HiLocationMarker } from 'react-icons/hi';
 import { BiBed, BiBath } from 'react-icons/bi';
 import { AiOutlineCar, AiFillStar } from 'react-icons/ai';
-import React, { useEffect } from 'react';
 
-// png here
-import chat from "../assets/images/Chat.png";
+import chat from '../assets/images/Chat.png';
 import airConditioner from '../assets/images/air-conditioner.png';
 import kitchen from '../assets/images/kitchen-set.png';
 import balcony from '../assets/images/balcony.png';
 import garden from '../assets/images/gardening.png';
-import gym from "../assets/images/gym.png";
-import bbq from "../assets/images/bbq.png";
-import playground from "../assets/images/playground.png";
-import squash from "../assets/images/squash.png";
-import tennis from "../assets/images/tennis.png";
-import boy1 from "../assets/images/Boy1.png";
-import boy2 from "../assets/images/Boy2.png";
-import smoking from "../assets/images/yes-smoking-icon.png";
-import noSmoking from "../assets/images/no-smoking-icon.png";
-import pet from "../assets/images/pet-icon.png";
-import noPet from "../assets/images/no-pets-icon.png";
-import drink from "../assets/images/alcohol-icon.png";
-import noDrink from "../assets/images/no-alcohol-icon.png";
-import earlyBird from "../assets/images/early-bird-icon.png";
-import nightOwl from "../assets/images/night-owl-icon.png";
-
+import gym from '../assets/images/gym.png';
+import bbq from '../assets/images/bbq.png';
+import playground from '../assets/images/playground.png';
+import squash from '../assets/images/squash.png';
+import tennis from '../assets/images/tennis.png';
+import boy1 from '../assets/images/Boy1.png';
+import boy2 from '../assets/images/Boy2.png';
+import smoking from '../assets/images/yes-smoking-icon.png';
+import noSmoking from '../assets/images/no-smoking-icon.png';
+import pet from '../assets/images/pet-icon.png';
+import noPet from '../assets/images/no-pets-icon.png';
+import drink from '../assets/images/alcohol-icon.png';
+import noDrink from '../assets/images/no-alcohol-icon.png';
+import earlyBird from '../assets/images/early-bird-icon.png';
+import nightOwl from '../assets/images/night-owl-icon.png';
 
 export default function RoomDetail() {
-    // Retrieve the roomId from the URL parameters
-    const { roomId } = useParams();
+    const { Room_ID } = useParams();
+    /*const [room, setRoom] = useState(null);
+
+    useEffect(() => {
+        try {
+            const fetchRoomDetails = async () => {
+                try {
+                    console.log(Room_ID);
+                    const response = await axios.get(`http://localhost:3000/room/${Room_ID}`);
+                    setRoom(response.data);
+                } catch (error) {
+                    console.error(error);
+                }
+            };
+
+            fetchRoomDetails();
+        } catch (error) {
+            console.error(error);
+        }
+    }, [Room_ID]);
+
+    if (!room) {
+        return <div>Loading...</div>;
+    }
 
     useEffect(() => {
         const script = document.createElement('script');
@@ -40,7 +61,7 @@ export default function RoomDetail() {
         return () => {
             document.body.removeChild(script);
         };
-    }, []);
+    }, []);*/
 
     // Mock data
     const mockRoomData = {

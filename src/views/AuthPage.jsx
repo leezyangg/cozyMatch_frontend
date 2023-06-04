@@ -10,13 +10,13 @@ const AuthPage = (props) => {
     useEffect(() => {
         const authenticateUser = async () => {
             axios.post(
-                'http://localhost:3001/authenticate',
+                'http://localhost:3000/authenticate',
                 { username: user.name }
-        
+
             )
                 // eslint-disable-next-line react/prop-types
                 .then(r => props.onAuth({ ...r.data, secret: user.name }))
-                
+
                 .catch(e => console.log('error', e))
         };
 

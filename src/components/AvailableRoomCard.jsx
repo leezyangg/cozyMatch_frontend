@@ -6,7 +6,10 @@ import PropTypes from 'prop-types';
 
 export default function AvailableRoomCard(props) {
     return (
-        <Link to={`/room-detail/${props.Room_ID}`} >
+        <Link to={{
+            pathname: `/room-detail/${props.Room_ID}`,
+            state: { roomId: props.Room_ID }
+        }}>
             <div className="flex shadow-xl rounded-xl p-6 bg-slate-300 my-5">
                 <div className=" h-[150px] w-[150px] mr-7">
                     <img src="src/assets/room.jpg" alt="roomlist" className="h-full rounded-xl object-cover" />
