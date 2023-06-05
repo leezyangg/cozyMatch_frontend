@@ -1,21 +1,28 @@
 import Map from "../components/Map";
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Switch } from '@headlessui/react'
+import { Switch } from '@headlessui/react';
 import AvailableRoomCard from "../components/AvailableRoomCard";
 import availableRooms from "../assets/requiredData/roomDetailData";
 
 export default function RenterHomePage() {
   const [rooms, setRooms] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [hasContent, setHasContent] = useState(false);
 
   useEffect(() => {
     // Fetch room listings from backend
     axios.get('http://localhost:3000/room')
       .then(response => {
         setRooms(response.data);
+        setLoading(false);
+        if (response.data.length > 0) {
+          setHasContent(true);
+        }
       })
       .catch(error => {
         console.error('Error fetching room listings:', error);
+        setLoading(false);
       });
   }, []);
 
@@ -74,9 +81,15 @@ export default function RenterHomePage() {
             </div>
           </div>
           <div className="overflow-y-auto max-h-[530px] my-2">
-            <div className="flex flex-col">
-              {availableRoomCard}
-            </div>
+            {loading ? (
+              <p>Loading...</p>
+            ) : hasContent ? (
+              <div className="flex flex-col">
+                {availableRoomCard}
+              </div>
+            ) : (
+              <p>No room listings found.</p>
+            )}
           </div>
         </div>
         <div className="">

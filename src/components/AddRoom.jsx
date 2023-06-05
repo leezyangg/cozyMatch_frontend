@@ -2,22 +2,35 @@ import loginImg from '../assets/room.jpg'
 import { BsUpload } from 'react-icons/bs';
 import RoomListing from "../views/RoomListing";
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 export default function AddRoom() {
 
+    const date = new Date();
+
     const [formData, setFormData] = useState({
-        propertyTitle: '',
+        Room_ID: Math.round(Math.random() * 100),
+        propertyName: '',
         address: '',
         type: '',
         furnishing: '',
-        price: '',
+        rentalFee: '',
         vacancy: '',
+        bedroom: 5,
+        bathroom: 3,
+        parking: 2,
+        availability: true,
+        postedDate: date,
         facilities: [],
         description: '',
         agreeToTerms: false,
         image: null,
         video: null
     });
+
+    const navigate = useNavigate();
+
     const navigateToRoomListing = () => {
         // 👇️ navigate to /contacts
         navigate('/roomlist');
@@ -60,34 +73,50 @@ export default function AddRoom() {
         }
     };
 
-    const handleVideoInputChange = (event) => {
-        const file = event.target.files[0];
-        setFormData((prevData) => ({
-          ...prevData,
-          video: file,
-        }));
-      };
-    
-      const handlePicturesInputChange = (event) => {
-        const files = Array.from(event.target.files);
-        setFormData((prevData) => ({
-          ...prevData,
-          image: files,
-        }));
-      };
+    const handleVideoInputChange = (e) => {
+        setFormData({
+            ...formData,
+            video: e.target.files[0]
+        });
+    };
 
-    const handleSubmit = (event) => {
+    const handlePicturesInputChange = (e) => {
+        setFormData({
+            ...formData,
+            image: e.target.files[0]
+        });
+    }
+
+    const handleSubmit = async (event) => {
         event.preventDefault();
         console.log("in vue script");
         console.log(formData);
 
-        // Send the form data to the backend
-        fetch('/your-api-endpoint', {
+        // Create a new FormData object
+        const data = new FormData();
+
+        // Append each form field to the FormData object
+        for (const key in formData) {
+            data.append(key, formData[key]);
+        }
+
+        // Send the form data to the backend using Axios
+        axios.post('http://localhost:3000/addroom', formData)
+            .then((response) => {
+                // Handle the response from the backend
+                console.log('Response from backend:', response.data);
+                // Optionally, you can navigate to the RoomListing page here
+                navigateToRoomListing();
+            })
+            .catch((error) => {
+                // Handle any errors that occurred during the request
+                console.error('Error:', error);
+            });
+
+        /*fetch('http://localhost:3000/addroom', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(formData)
+
+            body: data // Use FormData object
         })
             .then((response) => response.json())
             .then((data) => {
@@ -99,7 +128,7 @@ export default function AddRoom() {
             .catch((error) => {
                 // Handle any errors that occurred during the request
                 console.error('Error:', error);
-            });
+            });*/
     };
 
     return (
@@ -114,8 +143,8 @@ export default function AddRoom() {
                         <label>Property Title{' '}
                             <span className="text-red-600">*</span></label>
                         <input className='border p-2' type="text"
-                            name="propertyTitle" // Add name attribute
-                            value={formData.propertyTitle} // Bind value to the state
+                            name="propertyName" // Add name attribute
+                            value={formData.propertyName} // Bind value to the state
                             onChange={handleInputChange} // Handle input change
                         />
                     </div>
@@ -154,8 +183,8 @@ export default function AddRoom() {
                                 <label>Price (RM){' '}
                                     <span className="text-red-600">*{' '}</span></label>
                                 <input className='border p-2' type="text"
-                                    name="price" // Add name attribute
-                                    value={formData.price} // Bind value to the state
+                                    name="rentalFee" // Add name attribute
+                                    value={formData.rentalFee} // Bind value to the state
                                     onChange={handleInputChange} // Handle input change
                                 />
                             </div>
@@ -312,36 +341,35 @@ export default function AddRoom() {
                             onChange={handleInputChange} // Handle input change
                         />
                     </div>
-                    
-                        <div>
-                            <label className="my-5 py-2 relative flex items-center">
-                                {/* <BsUpload className="mr-2" /> */}
-                                Upload Property Video{' '}
-                                <span className="text-red-600">*</span>
-                                <input
-                                    type="file"
-                                    accept="video/*"
-                                    name="video" // Add name attribute
-                            value={formData.video} // Bind value to the state
-                                    onChange={handleVideoInputChange}
-                                />
-                            </label>
-                        </div>
-                        <div>
-                            <label className="w-full my-5 py-2 relative flex items-center ">
-                                {/* <BsUpload className="mr-2" /> */}
-                                Upload Property Pictures
-                                <input
-                                    type="file"
-                                    accept="image/*"
-                                    name="image" // Add name attribute
-                            value={formData.image} // Bind value to the state
-                                    multiple
-                                    onChange={handlePicturesInputChange}
-                                />
-                            </label>
-                        </div>
-                    
+
+                    <div>
+                        <label className="my-5 py-2 relative flex items-center">
+                            {/* <BsUpload className="mr-2" /> */}
+                            Upload Property Video{' '}
+                            <span className="text-red-600">*</span>
+                            <input
+                                type="file"
+                                accept="video/*"
+                                name="video" // Add name attribute
+                                onChange={handleVideoInputChange}
+                                multiple
+                            />
+                        </label>
+                    </div>
+                    <div>
+                        <label className="w-full my-5 py-2 relative flex items-center ">
+                            {/* <BsUpload className="mr-2" /> */}
+                            Upload Property Pictures
+                            <input
+                                type="file"
+                                accept="image/*"
+                                name="image" // Add name attribute
+                                onChange={handlePicturesInputChange}
+                                multiple
+                            />
+                        </label>
+                    </div>
+
 
                     <div>
                         <p>
