@@ -121,7 +121,7 @@ export default function RoomDetail() {
                 <h4 className='font-bold'>{room.propertyName}</h4>
                 <div className='flex items-center pt-1 pb-5'>
                     <HiLocationMarker size={15} />
-                    <h4 className='text-xs font-semibold'>{mockRoomData.address}</h4>
+                    <h4 className='text-xs font-semibold'>{room.address}</h4>
                 </div>
                 <div className='flex space-x-4'>
                     <iframe
@@ -147,19 +147,19 @@ export default function RoomDetail() {
                 <div className='grid grid-cols-4 gap-4 pt-5'>
                     <div className="col-span-3 shadow-xl rounded-xl p-6">
                         <div className='flex flex-col'>
-                            <h4 className='font-bold pb-5 text-2xl'>RM{mockRoomData.rentalFee}/ Per Month</h4>
+                            <h4 className='font-bold pb-5 text-2xl'>RM{room.rentalFee}/ Per Month</h4>
                             <div className='w-48 flex items-center space-x-4 pb-4'>
                                 <div className='flex items-center'>
                                     <BiBed />
-                                    <h4>{mockRoomData.bedroom}</h4>
+                                    <h4>{room.bedroom}</h4>
                                 </div>
                                 <div className='flex items-center'>
                                     <BiBath />
-                                    <h4>{mockRoomData.bathroom}</h4>
+                                    <h4>{room.bathroom}</h4>
                                 </div>
                                 <div className='flex items-center'>
                                     <AiOutlineCar />
-                                    <h4>{mockRoomData.parking}</h4>
+                                    <h4>{room.parking}</h4>
                                 </div>
                             </div>
                             <hr></hr>
@@ -172,11 +172,11 @@ export default function RoomDetail() {
                                         </div>
                                         <div className='flex flex-col mb-5'>
                                             <h4 className='font-bold'>Property Type:</h4>
-                                            <h4 className='text-sm'>{mockRoomData.propertyType}</h4>
+                                            <h4 className='text-sm'>{room.type}</h4>
                                         </div>
                                         <div className='flex flex-col '>
                                             <h4 className='font-bold'>Vacancy:</h4>
-                                            <h4 className='text-sm'>{mockRoomData.vacancy}</h4>
+                                            <h4 className='text-sm'>{room.vacancy}</h4>
                                         </div>
                                     </div>
                                     <div>
@@ -186,11 +186,11 @@ export default function RoomDetail() {
                                     <div className='flex flex-col'>
                                         <div className='flex flex-col mb-7'>
                                             <h4 className='font-bold'>Posted Date:</h4>
-                                            <h4 className='text-sm'>{mockRoomData.postedDate}</h4>
+                                            <h4 className='text-sm'>{room.postedDate}</h4>
                                         </div>
                                         <div className='flex flex-col mb-7'>
                                             <h4 className='font-bold'>Furnishing:</h4>
-                                            <h4 className='text-sm'>{mockRoomData.furnishing ? "Fully furnished" : "Non-funished"}</h4>
+                                            <h4 className='text-sm'>{room.furnishing ? "Fully furnished" : "Non-funished"}</h4>
                                         </div>
                                     </div>
                                 </div>

@@ -101,7 +101,7 @@ export default function AddRoom() {
         }
 
         // Send the form data to the backend using Axios
-        axios.post('http://localhost:3000/addroom', formData)
+        /*axios.post('http://localhost:3000/addroom', formData)
             .then((response) => {
                 // Handle the response from the backend
                 console.log('Response from backend:', response.data);
@@ -111,9 +111,10 @@ export default function AddRoom() {
             .catch((error) => {
                 // Handle any errors that occurred during the request
                 console.error('Error:', error);
-            });
+            });*/
 
-        /*fetch('http://localhost:3000/addroom', {
+        // Send the form data to the backend
+        fetch('http://localhost:3000/api/post', {
             method: 'POST',
 
             body: data // Use FormData object
@@ -128,7 +129,7 @@ export default function AddRoom() {
             .catch((error) => {
                 // Handle any errors that occurred during the request
                 console.error('Error:', error);
-            });*/
+            });
     };
 
     return (
