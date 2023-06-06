@@ -1,16 +1,12 @@
-import React from 'react';
+/* eslint-disable react/prop-types */
 import { GrMapLocation } from 'react-icons/gr';
 import { BiMoneyWithdraw } from 'react-icons/bi';
+import { useSelector } from 'react-redux';
 
-const user = {
-    smoking: false,
-    pet: true,
-    drink: false,
-    isEarly: true,
-};
+const selectPreferences = (state) => state.preferences.preferences;
 
 export default function RoommateInfoCard({ roommate }) {
-
+    const user = useSelector(selectPreferences);
     let matchScore = 0;
     let score = 0;
 

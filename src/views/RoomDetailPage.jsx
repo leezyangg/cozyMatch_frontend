@@ -37,6 +37,14 @@ export default function RoomDetail() {
                     console.log(Room_ID);
                     const response = await axios.get(`http://localhost:3000/room/${Room_ID}`);
                     setRoom(response.data);
+                    const script = document.createElement('script');
+                    script.src = 'https://js.stripe.com/v3/buy-button.js';
+                    script.async = true;
+                    document.body.appendChild(script);
+
+                    return () => {
+                        document.body.removeChild(script);
+                    };
                 } catch (error) {
                     console.error(error);
                 }
