@@ -12,10 +12,13 @@ const preferencesSlice = createSlice({
     updatePreferences: (state, action) => {
       state.preferences = action.payload;
     },
+    removePreferences: (state) => {
+      state.preferences = null;
+  },
   },
 });
 
-export const { updatePreferences } = preferencesSlice.actions;
+export const { updatePreferences, removePreferences } = preferencesSlice.actions;
 
 export const selectPreferences = (state) => state.preferences.preferences;
 

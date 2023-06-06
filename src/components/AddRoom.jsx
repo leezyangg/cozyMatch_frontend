@@ -1,9 +1,7 @@
 import loginImg from '../assets/room.jpg'
 import { BsUpload } from 'react-icons/bs';
-import RoomListing from "../views/RoomListing";
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 
 export default function AddRoom() {
 

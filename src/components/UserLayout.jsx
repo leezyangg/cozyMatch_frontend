@@ -2,13 +2,14 @@ import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { Menu } from '@headlessui/react'
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../redux/userSlice';
+import { removePreferences } from "../redux/preferenceSlice";
 
 
 const navigation = [
     { name: 'Home', to: '/renter' },
     { name: 'Roommate Match', to: '/roommateMatchQuestion' },
     { name: 'Room Matching', to: '/renterHomePage' },
-    { name: 'Chatting', to: '/chating1' },
+    { name: 'Chat', to: '/chat1' },
 ]
 
 const selectUser = (state) => state.auth.user;
@@ -17,9 +18,10 @@ export default function UserLayout() {
     const dispatch = useDispatch();
     const user = useSelector(selectUser);
     const navigate = useNavigate();
-    const logout = (ev) => {
+    const signout = (ev) => {
         ev.preventDefault();
-        //  dispatch(logout);
+        dispatch(logout());
+        dispatch(removePreferences());
         navigate("/");
     }
     return (
@@ -55,7 +57,7 @@ export default function UserLayout() {
                             <Menu.Item>
                               <a
                                 href="#"
-                                onClick={(ev) => logout(ev)}
+                                onClick={(ev) => signout(ev)}
                                 className={'block px-4 py-2 text-sm text-gray-700'}
                               >
                                 Sign Out

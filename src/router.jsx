@@ -56,7 +56,7 @@ const router = createBrowserRouter([
                 element: <RoomDetail />,
             },
             {
-                path: '/chating1',
+                path: '/chat1',
                 element: <ChatApp />,
             },
         ],
@@ -88,7 +88,7 @@ const router = createBrowserRouter([
                 element: <RoomListing />,
             },
             {
-                path: '/chating2',
+                path: '/chat2',
                 element: <ChatApp />,
             },
         ],

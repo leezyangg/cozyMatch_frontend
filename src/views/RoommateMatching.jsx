@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import RoommateInfoCard from '../components/RoommateInfoCard';
 
 export default function RoommateMatching() {
