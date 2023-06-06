@@ -44,6 +44,10 @@ export default function RoommateInfoCard({ roommate }) {
         scoreStyle = 'bg-amber-700 flex flex-col items-center rounded-b-xl py-2 w-full';
     }
 
+    function handleClick() {
+        alert('Im here!')
+    }
+
     return (
         <div>
             <div className="shadow-xl rounded-xl bg-transparent">
@@ -100,8 +104,7 @@ export default function RoommateInfoCard({ roommate }) {
                 </div>
             </div>
             <div className="flex flex-col items-center w-full mt-3">
-                <button className="bg-amber-900 rounded-xl w-full text-white font-bold py-1">Check Room</button>
-            </div>
+                <button className="bg-amber-900 rounded-xl w-full text-white font-bold py-1" onClick={handleClick}>Check Room</button>            </div>
         </div>
     );
 }
