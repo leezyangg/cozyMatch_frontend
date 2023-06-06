@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { useNavigate } from "react-router-dom";
 import axios from 'axios';
+
 import { HiLocationMarker } from 'react-icons/hi';
 import { BiBed, BiBath } from 'react-icons/bi';
 import { AiOutlineCar, AiFillStar } from 'react-icons/ai';
-
 import chat from '../assets/images/Chat.png';
 import airConditioner from '../assets/images/air-conditioner.png';
 import kitchen from '../assets/images/kitchen-set.png';
@@ -27,6 +29,9 @@ import earlyBird from '../assets/images/early-bird-icon.png';
 import nightOwl from '../assets/images/night-owl-icon.png';
 
 export default function RoomDetail() {
+    const navigate = useNavigate()
+    const selectUser = (state) => state.auth.user;
+    const user = useSelector(selectUser);
     const { Room_ID } = useParams();
     const [room, setRoom] = useState(null);
 
@@ -122,6 +127,13 @@ export default function RoomDetail() {
         },
     };
 
+    function navigateToChat() {
+        if (user.userType == 'Renter')  {
+            navigate("/chat1");
+        } else {
+            navigate("/chat2");
+        }
+    }
 
     return (
         <div className='px-10 pb-10'>
@@ -132,16 +144,17 @@ export default function RoomDetail() {
                     <h4 className='text-xs font-semibold'>{room.address}</h4>
                 </div>
                 <div className='flex space-x-4'>
-                    <iframe
+                    {/* <iframe
                         className='rounded-lg'
                         width="600" height="400"
                         src="https://www.youtube.com/embed/TtQ9hwYoyWQ"
                         title="YouTube video player"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         allowfullscreen>
-                    </iframe>
+                    </iframe> */}
+                    <video src={`http://localhost:3000/uploads/${room.video}`} ></video>
                     <div className='grid gap-4 grid-cols-2 grid-rows-2'>
-                        {mockRoomData.imgUrls.map((url, index) => (
+                        {/* {room.imgUrls.map((url, index) => (
                             <img
                                 key={index}
                                 src={url}
@@ -149,7 +162,8 @@ export default function RoomDetail() {
                                 className='rounded-lg'
                                 style={{ maxWidth: '280px', maxHeight: '280px' }}
                             />
-                        ))}
+                        ))} */}
+                        <img src={`http://localhost:3000/uploads/${room.image}`} alt="" />
                     </div>
                 </div>
                 <div className='grid grid-cols-4 gap-4 pt-5'>
@@ -234,7 +248,7 @@ export default function RoomDetail() {
                             </div>
 
                             {/* Logic of the Chat with me */}
-                            <div className='bg-orange-400 flex py-3 px-12 mt-3 rounded space-x-2 items-center cursor-pointer' onClick="#">
+                            <div className='bg-orange-400 flex py-3 px-12 mt-3 rounded space-x-2 items-center cursor-pointer' onClick={navigateToChat}>
                                 <img src={chat} alt="chat icon" className='h-5' />
                                 <h4 className='text-sm text-white font-bold'>Chat with Me</h4>
                             </div>
