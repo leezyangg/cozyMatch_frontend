@@ -106,7 +106,7 @@ export default function RoomDetail() {
     return (
         <div className='px-10 pb-10'>
             <div className='flex flex-col'>
-                <h4 className='font-bold'>{room.propertyName}</h4>
+                <h2 className='font-bold'>{room.propertyName}</h2>
                 <div className='flex items-center pt-1 pb-5'>
                     <HiLocationMarker size={15} />
                     <h4 className='text-xs font-semibold'>{room.address}</h4>
