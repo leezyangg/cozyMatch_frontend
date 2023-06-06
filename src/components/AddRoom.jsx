@@ -1,7 +1,9 @@
 import loginImg from '../assets/room.jpg'
 import { BsUpload } from 'react-icons/bs';
+import RoomListing from "../views/RoomListing";
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 export default function AddRoom() {
 
@@ -81,7 +83,7 @@ export default function AddRoom() {
     const handlePicturesInputChange = (e) => {
         setFormData({
             ...formData,
-            image: e.target.files[0]
+            image: e.target.files
         });
     }
 
@@ -95,7 +97,13 @@ export default function AddRoom() {
 
         // Append each form field to the FormData object
         for (const key in formData) {
-            data.append(key, formData[key]);
+            if (key === "image") {
+                for (let i = 0; i < formData.image.length; i++) {
+                    data.append("image", formData.image[i]);
+                }
+            } else {
+                data.append(key, formData[key]);
+            }
         }
 
         // Send the form data to the backend using Axios
