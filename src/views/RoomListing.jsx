@@ -32,7 +32,7 @@ function RoomListing() {
                 <HiLocationMarker size={20} />
                 <h3>Taman Serdang Java, Sri Kembangan, Selangor</h3>
             </div>
-            <div className="space-y-7">
+            <div className="space-y-7 pb-10">
                 {listedRoomCard}
             </div>
         </div>

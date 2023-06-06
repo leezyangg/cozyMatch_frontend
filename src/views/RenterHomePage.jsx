@@ -1,9 +1,8 @@
 import Map from "../components/Map";
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Switch } from '@headlessui/react';
 import AvailableRoomCard from "../components/AvailableRoomCard";
-import availableRooms from "../assets/requiredData/roomDetailData";
 
 export default function RenterHomePage() {
   const [rooms, setRooms] = useState([]);
@@ -80,7 +79,7 @@ export default function RenterHomePage() {
               <h4 className="text-xs">More</h4>
             </div>
           </div>
-          <div className="overflow-y-auto max-h-[530px] my-2">
+          <div className="overflow-y-auto scrollbar-hide max-h-[530px] my-2">
             {loading ? (
               <p>Loading...</p>
             ) : hasContent ? (

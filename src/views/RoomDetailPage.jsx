@@ -11,9 +11,15 @@ import chat from '../assets/images/Chat.png';
 import airConditioner from '../assets/images/air-conditioner.png';
 import kitchen from '../assets/images/kitchen-set.png';
 import balcony from '../assets/images/balcony.png';
-import garden from '../assets/images/gardening.png';
+import Wifi from '../assets/images/wifi.png'
+import businessCenter from '../assets/images/business.png'
 import gym from '../assets/images/gym.png';
-import bbq from '../assets/images/bbq.png';
+import refrigerator from '../assets/images/refrigerator.png';
+import badminton from '../assets/images/badminton.png';
+import miniMarket from '../assets/images/miniMarket.png';
+import salon from '../assets/images/salon.png';
+import security from '../assets/images/security.png';
+import swimmingPool from '../assets/images/swimmingPool.png';
 import playground from '../assets/images/playground.png';
 import squash from '../assets/images/squash.png';
 import tennis from '../assets/images/tennis.png';
@@ -65,51 +71,12 @@ export default function RoomDetail() {
         return <div>Loading...</div>;
     }
 
-    // useEffect(() => {
-    //     const script = document.createElement('script');
-    //     script.src = 'https://js.stripe.com/v3/buy-button.js';
-    //     script.async = true;
-    //     document.body.appendChild(script);
-
-    //     return () => {
-    //         document.body.removeChild(script);
-    //     };
-    // }, []);
-
     // Mock data
     const mockRoomData = {
-        id: 1,
-        title: 'FULL FURNISHED MEDIUM ROOM WITH BALCONY AT uNIV 360',
-        address: "Taman Serdang Jaya,  Seri Kembangan, Selangor",
-        description: 'This is a sample room.',
-        imgUrls: [
-            '/src/assets/room.jpg',
-            '/src/assets/room.jpg',
-            '/src/assets/room.jpg',
-        ],
-        rentalFee: 1500,
         bedroom: 5,
         bathroom: 5,
         parking: 5,
 
-        // Property features
-        aircon: true,
-        kitchen: true,
-        balcony: true,
-        garden: true,
-
-        // Facilities
-        gym: true,
-        bbq: true,
-        playground: true,
-        squash: true,
-        tennis: true,
-
-        builtUpSize: 1100,
-        propertyType: "Condominium",
-        vacancy: 1,
-        postedDate: "03/05/2023",
-        furnishing: true,
         landlord: {
             landlordProfile: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
             name: "Arif",
@@ -128,13 +95,14 @@ export default function RoomDetail() {
     };
 
     function navigateToChat() {
-        if (user.userType == 'Renter')  {
+        if (user.userType == 'Renter') {
             navigate("/chat1");
         } else {
             navigate("/chat2");
         }
     }
 
+    const facilities = room.facilities[0].split(',');
     return (
         <div className='px-10 pb-10'>
             <div className='flex flex-col'>
@@ -143,28 +111,15 @@ export default function RoomDetail() {
                     <HiLocationMarker size={15} />
                     <h4 className='text-xs font-semibold'>{room.address}</h4>
                 </div>
-                <div className='flex space-x-4'>
-                    {/* <iframe
-                        className='rounded-lg'
-                        width="600" height="400"
-                        src="https://www.youtube.com/embed/TtQ9hwYoyWQ"
-                        title="YouTube video player"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowfullscreen>
-                    </iframe> */}
-                    <video src={`http://localhost:3000/uploads/${room.video}`} ></video>
-                    <div className='grid gap-4 grid-cols-2 grid-rows-2'>
-                        {/* {room.imgUrls.map((url, index) => (
-                            <img
-                                key={index}
-                                src={url}
-                                alt={`Room Image ${index + 1}`}
-                                className='rounded-lg'
-                                style={{ maxWidth: '280px', maxHeight: '280px' }}
-                            />
-                        ))} */}
-                        <img src={`http://localhost:3000/uploads/${room.image}`} alt="" />
-                    </div>
+                <div className='flex space-x-10 overflow-x-auto scrollbar-hide'>
+                    <video src={`http://localhost:3000/uploads/${room.video}`} controls className='rounded-lg object-cover' width="600" height="600"></video>
+                    {room.image.map((image, index) => (
+                        <img
+                            key={index}
+                            src={`http://localhost:3000/uploads/${image}`}
+                            className='rounded-lg max-w-sm object-scale-down'
+                        />
+                    ))}
                 </div>
                 <div className='grid grid-cols-4 gap-4 pt-5'>
                     <div className="col-span-3 shadow-xl rounded-xl p-6">
@@ -190,7 +145,7 @@ export default function RoomDetail() {
                                     <div className='flex flex-col'>
                                         <div className='flex flex-col mb-5'>
                                             <h4 className='font-bold'>Build-Up Size:</h4>
-                                            <h4 className='text-sm'>{mockRoomData.builtUpSize} sq. ft.</h4>
+                                            <h4 className='text-sm'>1100 sq. ft.</h4>
                                         </div>
                                         <div className='flex flex-col mb-5'>
                                             <h4 className='font-bold'>Property Type:</h4>
@@ -263,21 +218,29 @@ export default function RoomDetail() {
                                 <div className='grid grid-cols-3 grid-rows-3 gap-4 pt-5 space-y-1'>
 
                                     {/* Logic whether or not to show the property features */}
-                                    {mockRoomData.aircon && <div className='flex items-center space-x-3 col-span-1 px-1'>
-                                        <img src={airConditioner} alt="aircon" className='h-7' />
+                                    {facilities.includes('aircond') && <div className='flex items-center space-x-3 col-span-1 px-1'>
+                                        <img src={airConditioner} alt="aircond" className='h-7' />
                                         <h4>Air Conditioner</h4>
                                     </div>}
-                                    {mockRoomData.kitchen && <div className='flex items-center space-x-3 col-span-1 px-1'>
-                                        <img src={kitchen} alt="kitchen" className='h-7' />
-                                        <h4>Kitchen Cabinet</h4>
+                                    {facilities.includes('refrigerator') && <div className='flex items-center space-x-3 col-span-1 px-1'>
+                                        <img src={refrigerator} alt="refrigerator" className='h-7' />
+                                        <h4>Refrigerator</h4>
                                     </div>}
-                                    {mockRoomData.balcony && <div className='flex items-center space-x-3 col-span-1 px-1'>
+                                    {facilities.includes('kitchen') && <div className='flex items-center space-x-3 col-span-1 px-1'>
+                                        <img src={kitchen} alt="kitchen" className='h-7' />
+                                        <h4>Kitchen Utility</h4>
+                                    </div>}
+                                    {facilities.includes('Wifi') && <div className='flex items-center space-x-3 col-span-1 px-1'>
+                                        <img src={Wifi} alt="Wifi" className='h-7' />
+                                        <h4>Wifi</h4>
+                                    </div>}
+                                    {facilities.includes('security') && <div className='flex items-center space-x-3 col-span-1 px-1'>
+                                        <img src={security} alt="security" className='h-7' />
+                                        <h4>24 Hours Security</h4>
+                                    </div>}
+                                    {facilities.includes('balcony') && <div className='flex items-center space-x-3 col-span-1 px-1'>
                                         <img src={balcony} alt="balcony" className='h-7' />
                                         <h4>Balcony</h4>
-                                    </div>}
-                                    {mockRoomData.garden && <div className='flex items-center space-x-3 col-span-1 px-1'>
-                                        <img src={garden} alt="Garden" className='h-7' />
-                                        <h4>Garden</h4>
                                     </div>}
                                 </div>
                             </div>
@@ -287,27 +250,42 @@ export default function RoomDetail() {
                             <div className='grid grid-cols-3 grid-rows-3 gap-4 pt-5 space-y-1'>
 
                                 {/* Logic whether or not to show the Facilities */}
-                                {mockRoomData.gym && <div className='flex items-center space-x-3 col-span-1 px-1'>
+                                {facilities.includes('business') && <div className='flex items-center space-x-3 col-span-1 px-1'>
+                                    <img src={businessCenter} alt="Business Center" className='h-7' />
+                                    <h4>Business Center</h4>
+                                </div>}
+                                {facilities.includes('salon') && <div className='flex items-center space-x-3 col-span-1 px-1'>
+                                    <img src={salon} alt="salon" className='h-7' />
+                                    <h4>Salon</h4>
+                                </div>}
+                                {facilities.includes('minimarket') && <div className='flex items-center space-x-3 col-span-1 px-1'>
+                                    <img src={miniMarket} alt="miniMarket" className='h-7' />
+                                    <h4>Mini Market</h4>
+                                </div>}
+                                {facilities.includes('gymnasium') && <div className='flex items-center space-x-3 col-span-1 px-1'>
                                     <img src={gym} alt="gym" className='h-7' />
                                     <h4>Gymnasium</h4>
                                 </div>}
-                                {mockRoomData.bbq && <div className='flex items-center space-x-3 col-span-1 px-1'>
-                                    <img src={bbq} alt="bbq" className='h-7' />
-                                    <h4>BBQ</h4>
+                                {facilities.includes('pool') && <div className='flex items-center space-x-3 col-span-1 px-1'>
+                                    <img src={swimmingPool} alt="swimmingPool" className='h-7' />
+                                    <h4>Swimming Pool</h4>
                                 </div>}
-                                {mockRoomData.playground && <div className='flex items-center space-x-3 col-span-1 px-1'>
+                                {facilities.includes('playground') && <div className='flex items-center space-x-3 col-span-1 px-1'>
                                     <img src={playground} alt="playground" className='h-7' />
                                     <h4>Playground</h4>
                                 </div>}
-                                {mockRoomData.squash && <div className='flex items-center space-x-3 col-span-1 px-1'>
+                                {facilities.includes('squash') && <div className='flex items-center space-x-3 col-span-1 px-1'>
                                     <img src={squash} alt="squash" className='h-7' />
                                     <h4>Squash Court</h4>
                                 </div>}
-                                {mockRoomData.tennis && <div className='flex items-center space-x-3 col-span-1 px-1'>
+                                {facilities.includes('tennis') && <div className='flex items-center space-x-3 col-span-1 px-1'>
                                     <img src={tennis} alt="tennis" className='h-7' />
                                     <h4>Tennis Court</h4>
                                 </div>}
-
+                                {facilities.includes('badminton') && <div className='flex items-center space-x-3 col-span-1 px-1'>
+                                    <img src={badminton} alt="badminton" className='h-7' />
+                                    <h4>Badminton Court</h4>
+                                </div>}
                             </div>
                         </div>
                     </div>

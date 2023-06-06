@@ -22,24 +22,19 @@ export default function LoginPage() {
             };
             dispatch(login(userData));
             navigate("/renter");
-        } else {
-            console.log('Login failed');
-        }
-
-        // landlord login 
-        if (username === 'landlord' && password === 'landlord') {
+        } else if (username === 'landlord' && password === 'landlord') {
             const userData = {
                 name: username,
                 userType: 'Landlord', 
                 imageUrl:
                     'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-            
             };
             dispatch(login(userData));
             navigate("/landlord");
         } else {
-            console.log('Login failed');
+            console.log("Login Failed")
         }
+
     };
 
     return (

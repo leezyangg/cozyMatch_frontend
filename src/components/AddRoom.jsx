@@ -1,9 +1,6 @@
 import loginImg from '../assets/room.jpg'
-import { BsUpload } from 'react-icons/bs';
-import RoomListing from "../views/RoomListing";
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 
 export default function AddRoom() {
 
@@ -255,11 +252,11 @@ export default function AddRoom() {
                             <div>
                                 <p>
                                     <input type="checkbox"
-                                        name="parking"
-                                        value="parking"
-                                        checked={formData.facilities.includes('parking')}
+                                        name="balcony"
+                                        value="balcony"
+                                        checked={formData.facilities.includes('balcony')}
                                         onChange={handleFacilitiesChange}
-                                    /> Parking
+                                    /> Balcony
                                 </p>
                                 <p>
                                     <input type="checkbox"
