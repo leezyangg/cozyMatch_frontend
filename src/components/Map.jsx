@@ -10,7 +10,7 @@ import { fromLonLat } from 'ol/proj';
 import { Vector as VectorLayer } from 'ol/layer';
 import { Vector as VectorSource } from 'ol/source';
 import { Icon, Style } from 'ol/style';
-import listedroom from "../assets/requiredData/roomListData";
+import RoomListings from "../assets/requiredData/roomListData";
 
 // Function to convert address to coordinates using OpenStreetMap Nominatim API
 async function geocodeAddress(address) {
@@ -35,6 +35,9 @@ async function geocodeAddress(address) {
 
 export default function MapComponent() {
   const mapContainerRef = useRef(null);
+
+// Retrieve the rooms data using the RoomListings component
+const listedroom = RoomListings();
 
   useEffect(() => {
     // Create a map instance
@@ -130,7 +133,7 @@ export default function MapComponent() {
           map.getView().setCenter(fromLonLat([longitude, latitude]));
 
           // Zoom to the current location
-          map.getView().setZoom(15);
+          map.getView().setZoom(13);
         },
         (error) => {
           console.error('Error getting current location:', error);
@@ -144,7 +147,7 @@ export default function MapComponent() {
     return () => {
       map.setTarget(null);
     };
-  }, []);
+  }, [listedroom]);
 
   return <div ref={mapContainerRef} style={{ width: '100%', height: '100%' }}></div>;
 }
