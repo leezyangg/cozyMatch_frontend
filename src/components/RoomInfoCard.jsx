@@ -1,10 +1,12 @@
+/* eslint-disable react/prop-types */
 import { BiBed, BiBath } from 'react-icons/bi';
 import { AiOutlineCar } from 'react-icons/ai';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 export default function RoomInfoCard(props) {
     return (
-        <div className="flex shadow-xl mx-20 rounded-xl items-center bg-slate-300 space-x-8">
+        <Link to={`/room_detail/${props.Room_ID}`} className="flex shadow-xl mx-20 rounded-xl items-center bg-slate-300 space-x-8">
             <div className="m-5 h-20 w-20">
                 <img src="src/assets/room.jpg" alt="roomlist" className="h-full rounded-xl" />
             </div>
@@ -41,7 +43,7 @@ export default function RoomInfoCard(props) {
             <div className={props.availability ? 'text-green-500' : 'text-red-500'}>
                 {props.availability ? 'Available' : 'Unavailable'}
             </div>
-        </div>
+        </Link>
     );
 }
 

@@ -88,6 +88,10 @@ const router = createBrowserRouter([
                 element: <RoomListing />,
             },
             {
+                path: '/room_detail/:Room_ID',
+                element: <RoomDetail />,
+            },
+            {
                 path: '/chat2',
                 element: <ChatApp />,
             },

@@ -102,7 +102,7 @@ export default function RoommateMatchQuestion() {
                             </div>
 
                             <div className='flex flex-col py-2'>
-                                <label>Do you any pets? </label>
+                                <label>Do you like pets? </label>
                                 <div>
                                     <label className="flex mt-2 items-center">
                                         <input type="radio" value="true" name='pet' checked={formValues.pet === true} onChange={handleInputChange}/>
