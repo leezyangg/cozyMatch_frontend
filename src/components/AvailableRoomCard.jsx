@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 export default function AvailableRoomCard(props) {
+    const facilities = props.facilities[0].split(',');
+    console.log(props)
     return (
         <Link to={{
             pathname: `/room-detail/${props.Room_ID}`,
@@ -12,7 +14,13 @@ export default function AvailableRoomCard(props) {
         }}>
             <div className="flex shadow-xl rounded-xl p-6 bg-slate-300 my-5">
                 <div className=" h-[150px] w-[150px] mr-7">
-                    <img src="src/assets/room.jpg" alt="roomlist" className="h-full rounded-xl object-cover" />
+                    <div className="h-[150px] w-[150px] mr-7">
+                        <img
+                            src={props.image[0] ? `http://localhost:3000/uploads/${props.image[0]}` : "src/assets/room.jpg"}
+                            alt="roomlist"
+                            className="h-full w-full rounded-xl object-cover"
+                        />
+                    </div>
                 </div>
                 <div className='flex flex-col'>
                     <div className='flex'>
