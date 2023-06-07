@@ -62,6 +62,7 @@ export default function AvailableRoomCard(props) {
         </Link>
 
     )
+    
 }
 
 AvailableRoomCard.propTypes = {
