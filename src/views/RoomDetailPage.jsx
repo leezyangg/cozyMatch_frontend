@@ -82,7 +82,7 @@ export default function RoomDetail() {
             name: "Arif",
             rating: 4.0,
         },
-        renters: {
+        renter1: {
             id: 1,
             name: "Izrin",
             occupation: "student",
@@ -90,6 +90,16 @@ export default function RoomDetail() {
             smoking: false,
             pet: false,
             drink: false,
+            isEarly: false,
+        },
+        renter2: {
+            id: 2,
+            name: "Lee",
+            occupation: "Genius",
+            cleanRoomFrequency: 2,
+            smoking: false,
+            pet: false,
+            drink: true,
             isEarly: true,
         },
     };
@@ -301,20 +311,20 @@ export default function RoomDetail() {
                                         <div className="flex flex-col items-center">
 
                                             {/* Roommate Information Here */}
-                                            <h4 className="font-semibold">{mockRoomData.renters.name}</h4>
-                                            <h4 className="text-sm">{mockRoomData.renters.occupation}</h4>
+                                            <h4 className="font-semibold">{mockRoomData.renter1.name}</h4>
+                                            <h4 className="text-sm">{mockRoomData.renter1.occupation}</h4>
                                         </div>
                                         <div className="flex flex-col items-center">
                                             <h4 className="font-semibold">Clean room</h4>
-                                            <h4 className="text-sm">{mockRoomData.renters.cleanRoomFrequency} per week</h4>
+                                            <h4 className="text-sm">{mockRoomData.renter1.cleanRoomFrequency} per week</h4>
                                         </div>
                                         <div className="flex flex-col items-center space-y-1">
                                             <h4 className="font-semibold">Preference</h4>
                                             <div className="flex items-center space-x-3">
-                                                <img src={mockRoomData.renters.smoking ? smoking : noSmoking} alt="" className="h-5" />
-                                                <img src={mockRoomData.renters.pet ? pet : noPet} alt="" className="h-5" />
-                                                <img src={mockRoomData.renters.drink ? drink : noDrink} alt="" className="h-5" />
-                                                <img src={mockRoomData.renters.isEarly ? earlyBird : nightOwl} alt="" className="h-5" />
+                                                <img src={mockRoomData.renter1.smoking ? smoking : noSmoking} alt="" className="h-5" />
+                                                <img src={mockRoomData.renter1.pet ? pet : noPet} alt="" className="h-5" />
+                                                <img src={mockRoomData.renter1.drink ? drink : noDrink} alt="" className="h-5" />
+                                                <img src={mockRoomData.renter1.isEarly ? earlyBird : nightOwl} alt="" className="h-5" />
                                             </div>
                                         </div>
                                     </div>
@@ -325,20 +335,20 @@ export default function RoomDetail() {
                                         <div className="flex flex-col items-center">
 
                                             {/* Roommate Information Here */}
-                                            <h4 className="font-semibold">{mockRoomData.renters.name}</h4>
-                                            <h4 className="text-sm">{mockRoomData.renters.occupation}</h4>
+                                            <h4 className="font-semibold">{mockRoomData.renter2.name}</h4>
+                                            <h4 className="text-sm">{mockRoomData.renter2.occupation}</h4>
                                         </div>
                                         <div className="flex flex-col items-center">
                                             <h4 className="font-semibold">Clean room</h4>
-                                            <h4 className="text-sm">{mockRoomData.renters.cleanRoomFrequency} per week</h4>
+                                            <h4 className="text-sm">{mockRoomData.renter2.cleanRoomFrequency} per week</h4>
                                         </div>
                                         <div className="flex flex-col items-center space-y-1">
                                             <h4 className="font-semibold">Preference</h4>
                                             <div className="flex items-center space-x-3">
-                                                <img src={mockRoomData.renters.smoking ? smoking : noSmoking} alt="" className="h-5" />
-                                                <img src={mockRoomData.renters.pet ? pet : noPet} alt="" className="h-5" />
-                                                <img src={mockRoomData.renters.drink ? drink : noDrink} alt="" className="h-5" />
-                                                <img src={mockRoomData.renters.isEarly ? earlyBird : nightOwl} alt="" className="h-5" />
+                                                <img src={mockRoomData.renter2.smoking ? smoking : noSmoking} alt="" className="h-5" />
+                                                <img src={mockRoomData.renter2.pet ? pet : noPet} alt="" className="h-5" />
+                                                <img src={mockRoomData.renter2.drink ? drink : noDrink} alt="" className="h-5" />
+                                                <img src={mockRoomData.renter2.isEarly ? earlyBird : nightOwl} alt="" className="h-5" />
                                             </div>
                                         </div>
                                     </div>
