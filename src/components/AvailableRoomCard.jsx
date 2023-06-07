@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 
 export default function AvailableRoomCard(props) {
     const facilities = props.facilities[0].split(',');
-    console.log(props)
     return (
         <Link to={{
             pathname: `/room-detail/${props.Room_ID}`,

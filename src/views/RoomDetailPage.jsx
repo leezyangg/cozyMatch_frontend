@@ -48,6 +48,7 @@ export default function RoomDetail() {
                     console.log(Room_ID);
                     const response = await axios.get(`http://localhost:3000/room/${Room_ID}`);
                     setRoom(response.data);
+                    
                     const script = document.createElement('script');
                     script.src = 'https://js.stripe.com/v3/buy-button.js';
                     script.async = true;
@@ -186,11 +187,11 @@ export default function RoomDetail() {
                                     src="https://js.stripe.com/v3/buy-button.js">
                                 </script>
 
-                                <stripe-buy-button
+                                {user.userType=="Renter"? <stripe-buy-button
                                     buy-button-id="buy_btn_1NEYEJLUWJSa0D8TJAh6jYPW"
                                     publishable-key="pk_live_51NEQAnLUWJSa0D8TkPBd79cMNuoY2rE00m9vnICeS7OUqenVAxaNtihjWSpJEQhEz5q2rkLNeWqCafq8ijI3VjFU00Hy4crJZ7"
                                 >
-                                </stripe-buy-button>
+                                </stripe-buy-button> : <></>}
                             </div>
                         </div>
                     </div>
